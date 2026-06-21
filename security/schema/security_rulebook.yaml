@@ -1,0 +1,116 @@
+schema_version: "1"
+# ─────────────────────────────────────────────────────────────────────────────
+# NSM Rulebook COT — a concrete rulebook whose rows are policy rules.
+#
+# Derived from the real netbox-nsm rule field catalog:
+#   netbox_nsm/rulebooks/templates.py  _FIELD_CATALOG / DEFAULT_RULEBOOK_SCHEMA_YAML
+#
+# This is the COT that the rulebook and zone-matrix COT views render real
+# objects from (each instance is one rule). Applied after nsm_objects.yaml so
+# the polymorphic source/destination/service references resolve to existing COTs.
+#
+# Dynamic COT -> view binding via the `views` field (never slug/group_name):
+#   nsm_rulebook -> full rulebook table view
+#   nsm_matrix   -> zone/policy matrix derived from this rulebook's rules
+#
+# nsm_config (non-GUI COT property) lives verbatim in `metadata`, not comments.
+# Row grouping: set `rulebook.row_group_by_col_id` to a rules-tab column id
+# (e.g. `name`, `status`, or `destination::ct_<field_id>` from the live layout).
+# ─────────────────────────────────────────────────────────────────────────────
+types:
+  - name: rulebook
+    slug: rulebook
+    verbose_name: "Rulebook"
+    verbose_name_plural: "Rulebook"
+    description: "NSM policy rulebook. Each object is one ordered rule (source/destination/service/action)."
+    group_name: "Rulebooks"
+    menu_name: "Security"
+    views: "rulebook, matrix"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 0
+            display_template: "{index}: {name}"
+        - rulebook:
+            matrix_tab_enabled: true
+    fields:
+      - id: 1
+        name: index
+        type: integer
+        label: Index
+        description: "Rule sequence number (primary key)."
+        required: true
+        primary: true
+        weight: 1
+      - id: 2
+        name: status
+        type: boolean
+        label: Status
+        description: "When false, the rule is disabled."
+        weight: 2
+      - id: 3
+        name: name
+        type: text
+        label: Name
+        description: "Optional short rule name."
+        weight: 3
+      - id: 4
+        name: source
+        type: multiobject
+        label: Source
+        description: "Source objects: zones, labels, addresses, and address groups."
+        required: true
+        is_polymorphic: true
+        related_object_types:
+          - custom-objects/zone
+          - custom-objects/label
+          - custom-objects/address
+          - custom-objects/address-group
+        weight: 11
+      - id: 5
+        name: destination
+        type: multiobject
+        label: Destination
+        description: "Destination objects: zones, labels, addresses, and address groups."
+        required: true
+        is_polymorphic: true
+        related_object_types:
+          - custom-objects/zone
+          - custom-objects/label
+          - custom-objects/address
+          - custom-objects/address-group
+        weight: 21
+      - id: 6
+        name: services_applications
+        type: multiobject
+        label: Services & Applications
+        description: "Service objects: service, service group, and network app."
+        required: true
+        is_polymorphic: true
+        related_object_types:
+          - custom-objects/service
+          - custom-objects/service-group
+          - custom-objects/app-network
+        weight: 40
+      - id: 7
+        name: actions
+        type: multiobject
+        label: Actions
+        description: "Rule outcome(s), e.g. permit or deny."
+        required: true
+        related_object_type: custom-objects/action
+        weight: 50
+      - id: 8
+        name: infos
+        type: multiobject
+        label: Infos
+        description: "Informational objects, e.g. business app (documentation column)."
+        related_object_type: custom-objects/app-business
+        weight: 60
+      - id: 9
+        name: description
+        type: longtext
+        label: Description
+        description: "Free-text rule description."
+        weight: 100
+    removed_fields: []

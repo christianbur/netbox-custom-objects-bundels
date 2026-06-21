@@ -1,0 +1,27 @@
+{% load i18n %}
+{% include "security/inc/addr_analysis_assets.html" %}
+<link rel="stylesheet" href="{% url 'plugins:netbox_custom_objects:security_bundle_asset' asset_path='css/nsm_ip_analyzer_applet.css' %}?v=1">
+<script>
+  window.NSM_IP_ANALYSIS_API = window.NSM_IP_ANALYSIS_API || "{% url 'plugins:netbox_custom_objects:security_ip_analysis_api' %}";
+  window.NSM_IP_ANALYSIS_CATEGORY_API = window.NSM_IP_ANALYSIS_CATEGORY_API || "{% url 'plugins:netbox_custom_objects:security_ip_analysis_category_api' %}";
+  window.NSM_IP_ANALYSIS_OBJECT_API = window.NSM_IP_ANALYSIS_OBJECT_API || "{% url 'plugins:netbox_custom_objects:security_ip_analysis_object_api' %}";
+  window.NSM_IP_ANALYSIS_ADD_OBJECT_TYPES_API = window.NSM_IP_ANALYSIS_ADD_OBJECT_TYPES_API || "{% url 'plugins:netbox_custom_objects:security_ip_analysis_add_object_types_api' %}";
+  window.NSM_IPA_I18N = window.NSM_IPA_I18N || {
+    "IP Analysis": "{% trans 'IP Analysis'|escapejs %}",
+    "Analyze object": "{% trans 'Analyze object'|escapejs %}",
+    "Analysis running…": "{% trans 'Analysis running…'|escapejs %}",
+    "Analysis failed.": "{% trans 'Analysis failed.'|escapejs %}",
+    "Close": "{% trans 'Close'|escapejs %}",
+    "Minimize": "{% trans 'Minimize'|escapejs %}",
+    "Add object": "{% trans 'Add object'|escapejs %}",
+    "Merge": "{% trans 'Merge'|escapejs %}",
+    "Search…": "{% trans 'Search…'|escapejs %}",
+    "No matches": "{% trans 'No matches'|escapejs %}",
+    "Searching…": "{% trans 'Searching…'|escapejs %}",
+    "No IP addresses resolved.": "{% trans 'No IP addresses resolved.'|escapejs %}",
+    "Analysis could not be loaded.": "{% trans 'Analysis could not be loaded.'|escapejs %}"
+  };
+</script>
+<script src="{% url 'plugins:netbox_custom_objects:security_bundle_asset' asset_path='js/nsm_ipa_util.js' %}?v=1"></script>
+<script src="{% url 'plugins:netbox_custom_objects:security_bundle_asset' asset_path='js/nsm_ipa_cell.js' %}?v=1"></script>
+<script src="{% url 'plugins:netbox_custom_objects:security_bundle_asset' asset_path='js/nsm_ip_analyzer_applet.js' %}?v=1"></script>

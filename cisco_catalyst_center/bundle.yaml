@@ -1,0 +1,10 @@
+name: cisco_catalyst_center
+verbose_name: "Cisco Catalyst Center"
+description: >
+  Custom Object Types modelling the full Cisco Catalyst Center netascode data
+  model (auto-generated from netascode schema.json catalyst_center section,
+  74 COTs). Covers sites, fabric, inventory, wireless, network/system settings
+  and authentication templates. Parent/child relationships use object FK fields;
+  inline nested objects and primitive arrays are stored as json fields.
+  Enumerations use text fields (allowed values in each field description) so
+  the bundle imports without external choice sets.

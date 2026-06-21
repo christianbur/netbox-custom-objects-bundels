@@ -1,0 +1,616 @@
+schema_version: "1"
+# ─────────────────────────────────────────────────────────────────────────────
+# NSM policy-object catalog (10 Custom Object Types).
+#
+# Derived 1:1 from the real netbox-nsm source of truth:
+#   netbox_nsm/objects/type_config_specs.py  REQUIRED_COT_SLUGS
+#   netbox_nsm/schema/nsm_portable_schema.json
+#   netbox_nsm/objects/builtin_types.py       BUILTIN_CUSTOM_TYPES
+#
+# Differences from the upstream portable schema (intentional, self-contained):
+#   * names/slugs/views use short identifiers in YAML; the bundle loader prefixes
+#     them with the package name at apply time (``security_action``, ``security-rulebook``,
+#     view keys ``security_rulebook``, …).
+#   * `select` + choice_set fields are modelled as `text` with the allowed
+#     values listed in the field description — the COT core has no choice_set
+#     provisioning yet, so this keeps the bundle importable on its own
+#     (same approach as the aci / meraki bundles).
+#   * nsm_config (a non-GUI COT property) lives in the `metadata` field as
+#     verbatim YAML — never in `comments`.
+# ─────────────────────────────────────────────────────────────────────────────
+types:
+  # ──────────────────────────── Action ────────────────────────────
+  - name: action
+    slug: action
+    verbose_name: "Action"
+    verbose_name_plural: "Actions"
+    description: "Policy action for matching traffic in a rule (e.g. permit, deny, drop). Used in rulebook Action columns."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 30
+            display_template: "{name!u}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: color
+        type: text
+        label: Color
+        description: "Hex color used in the rulebook / matrix cells, e.g. #28a745."
+        weight: 91
+      - id: 4
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 5
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Service ────────────────────────────
+  - name: service
+    slug: service
+    verbose_name: "Service"
+    verbose_name_plural: "Services"
+    description: "One network service (protocol + port). Used in rulebook Service columns and Security Panel links."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 20
+            display_template: "{name} ({protocol}/{port})"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: protocol
+        type: text
+        label: Protocol
+        required: true
+        description: "Allowed values: tcp, udp, sctp, icmp, icmpv6, gre, esp, ah, ip, any."
+        weight: 10
+      - id: 4
+        name: port
+        type: integer
+        label: Port
+        description: "Port 0-65535 (TCP/UDP/SCTP only)."
+        validation_minimum: 0
+        validation_maximum: 65535
+        weight: 11
+      - id: 5
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 6
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 7
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Service Group ────────────────────────────
+  - name: service_group
+    slug: service-group
+    verbose_name: "Service Group"
+    verbose_name_plural: "Service Groups"
+    description: "Named collection of services. Referenced in rulebook Service columns; members are Service objects."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 21
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: group
+        type: multiobject
+        label: Group Members
+        description: "Member service objects in this group."
+        required: true
+        related_object_type: custom-objects/service
+        weight: 10
+      - id: 4
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 5
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 6
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Address ────────────────────────────
+  - name: address
+    slug: address
+    verbose_name: "Address"
+    verbose_name_plural: "Addresses"
+    description: "Named address object for policy rules (host, prefix, or range). Used in Source/Destination columns."
+    group_name: "Objects"
+    menu_name: "Security"
+    # Bind the IP-Analyzer COT view (renders on each Address object's tab).
+    views: "ip_analyzer"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 12
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: address
+        type: object
+        label: Address
+        description: "NetBox IP address, range, or prefix this policy object represents."
+        is_polymorphic: true
+        related_object_types:
+          - ipam/ipaddress
+          - ipam/iprange
+          - ipam/prefix
+        weight: 11
+      - id: 4
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 5
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 6
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Address Group ────────────────────────────
+  - name: address_group
+    slug: address-group
+    verbose_name: "Address Group"
+    verbose_name_plural: "Address Groups"
+    description: "Named collection of address objects. Used in Source/Destination columns; members are Address objects."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 13
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: group
+        type: multiobject
+        label: Group Members
+        description: "Member address objects in this group."
+        required: true
+        related_object_type: custom-objects/address
+        weight: 10
+      - id: 4
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 5
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 6
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Label ────────────────────────────
+  - name: label
+    slug: label
+    verbose_name: "Label"
+    verbose_name_plural: "Labels"
+    description: "Classification tag for inventory or rules (e.g. compliance, tier). Used in label columns and Security Panel links."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 11
+            display_template: "{label_type[0]!u}:{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: label_type
+        type: text
+        label: Label Type
+        required: true
+        description: "Allowed values: role, application, environment, location, custom."
+        weight: 10
+      - id: 4
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 5
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 6
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Zone ────────────────────────────
+  - name: zone
+    slug: zone
+    verbose_name: "Zone"
+    verbose_name_plural: "Zones"
+    description: "Logical security zone for segmentation. Linked to inventory via Security Panel; used in rulebook zone columns."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 10
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 4
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 5
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Business App ────────────────────────────
+  - name: app_business
+    slug: app-business
+    verbose_name: "Business App"
+    verbose_name_plural: "Business Apps"
+    description: "Business application metadata for rule Info columns (ownership, criticality). Documentation only."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 40
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: criticality
+        type: text
+        label: Criticality
+        description: "Allowed values: low, medium, high, critical."
+        weight: 10
+      - id: 4
+        name: business_owner
+        type: object
+        label: Business Owner
+        related_object_type: tenancy/contactgroup
+        on_delete_behavior: set_null
+        weight: 11
+      - id: 5
+        name: technical_owner
+        type: object
+        label: Technical Owner
+        related_object_type: tenancy/contactgroup
+        on_delete_behavior: set_null
+        weight: 12
+      - id: 6
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 7
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 8
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Network App ────────────────────────────
+  - name: app_network
+    slug: app-network
+    verbose_name: "Network App"
+    verbose_name_plural: "Network Apps"
+    description: "Network application identifier, similar to Palo Alto App-ID (e.g. ssh, onedrive, ssl)."
+    group_name: "Objects"
+    menu_name: "Security"
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 22
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: app_category
+        type: text
+        label: Category
+        weight: 10
+      - id: 4
+        name: app_risk
+        type: text
+        label: Risk Level
+        description: "Risk level 1 (lowest) to 5 (highest), matching Palo Alto App-ID convention."
+        weight: 11
+      - id: 5
+        name: default_ports
+        type: text
+        label: Default Ports
+        description: "Comma-separated list of default ports/protocols, e.g. tcp/443,tcp/80."
+        weight: 12
+      - id: 6
+        name: color
+        type: text
+        label: Color
+        weight: 91
+      - id: 7
+        name: description
+        type: text
+        label: Description
+        weight: 90
+      - id: 8
+        name: comments
+        type: longtext
+        label: Comments
+        weight: 100
+    removed_fields: []
+
+  # ──────────────────────────── Object Link (n:m junction) ────────────────────────────
+  - name: object_link
+    slug: object-link
+    verbose_name: "Object Link"
+    verbose_name_plural: "Object Links"
+    description: "Links NetBox inventory to NSM policy objects or rulebooks (Security Panel source of truth)."
+    group_name: "Objects"
+    menu_name: "Security"
+    # n:m link table: combined Custom Objects tab shows the far endpoint of each link.
+    link_table: true
+    metadata: |
+      nsm_config:
+        - rule_view:
+            sort_order: 0
+            display_template: "{name}"
+    fields:
+      - id: 1
+        name: name
+        type: text
+        label: Name
+        primary: true
+        required: true
+        weight: 1
+      - id: 2
+        name: status
+        type: text
+        label: Status
+        required: true
+        default: active
+        description: "Allowed values: active, reserved, deprecated (default active)."
+        weight: 2
+      - id: 3
+        name: link_type
+        type: text
+        label: Link Type
+        required: true
+        default: policy
+        description: "Allowed values: policy, rulebook, enforcement_point (default policy)."
+        weight: 9
+      - id: 4
+        name: policy_object
+        type: object
+        label: Policy Object
+        description: "NSM policy object (zone, address, label, service, …). Required for policy links."
+        is_polymorphic: true
+        related_object_types:
+          - custom-objects/zone
+          - custom-objects/address
+          - custom-objects/address-group
+          - custom-objects/label
+          - custom-objects/service
+          - custom-objects/service-group
+          - custom-objects/app-business
+          - custom-objects/app-network
+        weight: 10
+      - id: 5
+        name: netbox_object
+        type: object
+        label: NetBox Object
+        description: "NetBox inventory object this link is stored on (device, VM, VDC, interface, prefix, …)."
+        required: true
+        is_polymorphic: true
+        related_object_types:
+          - dcim/device
+          - virtualization/virtualmachine
+          - dcim/virtualdevicecontext
+          - dcim/interface
+          - virtualization/vminterface
+          - ipam/prefix
+          - ipam/ipaddress
+          - ipam/iprange
+        weight: 11
+      - id: 6
+        name: propagation
+        type: text
+        label: Propagation
+        default: direct
+        description: "How the link inherits to IPAM children/group members. Allowed: direct, inherit_ipam, inherit_ipam_stop, inherit_group, inherit_group_stop."
+        weight: 12
+      - id: 7
+        name: rulebook_slug
+        type: text
+        label: Rulebook Slug
+        description: "Deployed COT rulebook slug (rulebook-*) when link_type is rulebook or enforcement_point."
+        weight: 14
+      - id: 8
+        name: comment
+        type: longtext
+        label: Comment
+        description: "Optional note shown in the Security Panel link row."
+        weight: 13
+    removed_fields: []

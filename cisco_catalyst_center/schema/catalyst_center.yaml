@@ -1,0 +1,4953 @@
+schema_version: 1
+types:
+  -
+    name: cisco_cc_authentication_templates
+    slug: cisco-cc-authentication-templates
+    verbose_name: Authentication Templates
+    verbose_name_plural: Authentication Templates
+    description: Authentication Templates (catalyst_center.authentication_templates).
+    group_name: Authentication
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: "Name (String) - Default value: No Authentication"
+        default: No Authentication
+        required: true
+        primary: true
+      -
+        id: 2
+        name: authentication_order
+        weight: 20
+        label: Authentication Order
+        type: text
+        description: "Allowed values: mac, dot1x. (default dot1x)"
+        default: dot1x
+      -
+        id: 3
+        name: bpdu_guard
+        weight: 30
+        label: BPDU Guard
+        type: boolean
+        description: "BPDU Guard (Boolean) - Default value: true"
+        default: true
+      -
+        id: 4
+        name: dot1x_to_mab_fallback_timeout
+        weight: 40
+        label: Dot1X To Mab Fallback Timeout
+        type: integer
+        validation_minimum: 3
+        validation_maximum: 120
+        description: "Dot1X To Mab Fallback Timeout (Integer) - Default value: 21 - Minimum value: 3 - Maximum value: 120"
+        default: 21
+      -
+        id: 5
+        name: number_of_hosts
+        weight: 50
+        label: Number Of Hosts
+        type: text
+        description: "Allowed values: Unlimited, Single. (default Unlimited)"
+        default: Unlimited
+      -
+        id: 6
+        name: pre_auth_acl
+        weight: 60
+        label: Pre Auth ACL
+        type: json
+        description: "Pre Auth ACL (Object)  Elements: - enabled - implicit_action - description - access_contracts"
+      -
+        id: 7
+        name: wake_on_lan
+        weight: 70
+        label: Wake On Lan
+        type: boolean
+        description: "Wake On Lan (Boolean) - Default value: false"
+        default: false
+    removed_fields: []
+  -
+    name: cisco_cc_authentication_templates_pre_auth_acl_access_contracts
+    slug: cisco-cc-authentication-templates-pre-auth-acl-access-contracts
+    verbose_name: Access Contracts
+    verbose_name_plural: Access Contracts
+    description: Access Contracts (catalyst_center.authentication_templates.pre_auth_acl.access_contracts).
+    group_name: Authentication
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: action
+        weight: 10
+        label: Action
+        type: text
+        description: "Allowed values: PERMIT, DENY."
+        required: true
+        primary: true
+      -
+        id: 2
+        name: port
+        weight: 20
+        label: Port
+        type: text
+        description: "Allowed values: domain, bootpc, bootps."
+        required: true
+      -
+        id: 3
+        name: protocol
+        weight: 30
+        label: Protocol
+        type: text
+        description: "Allowed values: TCP, UDP, TCP_UDP."
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_ssids
+    slug: cisco-cc-wireless-ssids
+    verbose_name: Ssids
+    verbose_name_plural: Ssids
+    description: Ssids (catalyst_center.wireless.ssids).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: auth_type
+        weight: 10
+        label: Auth Type
+        type: text
+        description: "Allowed values: WPA2_ENTERPRISE, WPA2_PERSONAL, OPEN, WPA3_ENTERPRISE, WPA3_PERSONAL, WPA2_WPA3_PERSONAL, WPA2_WPA3_ENTERPRISE, OPEN_SECURED."
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: wlan_type
+        weight: 30
+        label: Wlan Type
+        type: text
+        description: "Allowed values: Enterprise, Guest."
+        required: true
+      -
+        id: 4
+        name: aaa_override
+        weight: 40
+        label: AAA Override
+        type: boolean
+        description: AAA Override (Boolean)
+      -
+        id: 5
+        name: acct_servers
+        weight: 50
+        label: Acct Servers
+        type: json
+        description: Acct Servers (List - String)
+      -
+        id: 6
+        name: acl_name
+        weight: 60
+        label: ACL Name
+        type: text
+        description: ACL Name (String)
+      -
+        id: 7
+        name: ap_beacon_protection
+        weight: 70
+        label: Ap Beacon Protection
+        type: boolean
+        description: Ap Beacon Protection (Boolean)
+      -
+        id: 8
+        name: auth_key8021x
+        weight: 80
+        label: Auth Key8021X
+        type: boolean
+        description: Auth Key8021X (Boolean)
+      -
+        id: 9
+        name: auth_key8021x_plus_ft
+        weight: 90
+        label: Auth Key8021X Plus Ft
+        type: boolean
+        description: Auth Key8021X Plus Ft (Boolean)
+      -
+        id: 10
+        name: auth_key8021x_sha256
+        weight: 100
+        label: Auth Key8021X Sha256
+        type: boolean
+        description: Auth Key8021X Sha256 (Boolean)
+      -
+        id: 11
+        name: auth_key_easy_psk
+        weight: 110
+        label: Auth Key Easy Psk
+        type: boolean
+        description: Auth Key Easy Psk (Boolean)
+      -
+        id: 12
+        name: auth_key_easy_psk_sha256
+        weight: 120
+        label: Auth Key Easy Psk Sha256
+        type: boolean
+        description: Auth Key Easy Psk Sha256 (Boolean)
+      -
+        id: 13
+        name: auth_key_owe
+        weight: 130
+        label: Auth Key Owe
+        type: boolean
+        description: Auth Key Owe (Boolean)
+      -
+        id: 14
+        name: auth_key_psk
+        weight: 140
+        label: Auth Key Psk
+        type: boolean
+        description: Auth Key Psk (Boolean)
+      -
+        id: 15
+        name: auth_key_psk_plus_ft
+        weight: 150
+        label: Auth Key Psk Plus Ft
+        type: boolean
+        description: Auth Key Psk Plus Ft (Boolean)
+      -
+        id: 16
+        name: auth_key_sae
+        weight: 160
+        label: Auth Key Sae
+        type: boolean
+        description: Auth Key Sae (Boolean)
+      -
+        id: 17
+        name: auth_key_sae_ext
+        weight: 170
+        label: Auth Key Sae EXT
+        type: boolean
+        description: Auth Key Sae EXT (Boolean)
+      -
+        id: 18
+        name: auth_key_sae_ext_plus_ft
+        weight: 180
+        label: Auth Key Sae EXT Plus Ft
+        type: boolean
+        description: Auth Key Sae EXT Plus Ft (Boolean)
+      -
+        id: 19
+        name: auth_key_sae_plus_ft
+        weight: 190
+        label: Auth Key Sae Plus Ft
+        type: boolean
+        description: Auth Key Sae Plus Ft (Boolean)
+      -
+        id: 20
+        name: auth_key_suite_b1921x
+        weight: 200
+        label: Auth Key Suite B1921X
+        type: boolean
+        description: Auth Key Suite B1921X (Boolean)
+      -
+        id: 21
+        name: auth_key_suite_b1x
+        weight: 210
+        label: Auth Key Suite B1X
+        type: boolean
+        description: Auth Key Suite B1X (Boolean)
+      -
+        id: 22
+        name: auth_server
+        weight: 220
+        label: Auth Server
+        type: text
+        description: "Allowed values: auth_ise, auth_external, auth_internal."
+      -
+        id: 23
+        name: auth_servers
+        weight: 230
+        label: Auth Servers
+        type: json
+        description: Auth Servers (List - String)
+      -
+        id: 24
+        name: basic_service_set_client_idle_timeout
+        weight: 240
+        label: Basic Service Set Client Idle Timeout
+        type: integer
+        validation_minimum: 15
+        validation_maximum: 100000
+        description: "Basic Service Set Client Idle Timeout (Integer) - Minimum value: 15 - Maximum value: 100000"
+      -
+        id: 25
+        name: basic_service_set_max_idle
+        weight: 250
+        label: Basic Service Set Max Idle
+        type: boolean
+        description: Basic Service Set Max Idle (Boolean)
+      -
+        id: 26
+        name: broadcast_ssid
+        weight: 260
+        label: Broadcast Ssid
+        type: boolean
+        description: Broadcast Ssid (Boolean)
+      -
+        id: 27
+        name: cckm
+        weight: 270
+        label: Cckm
+        type: boolean
+        description: Cckm (Boolean)
+      -
+        id: 28
+        name: cckm_tsf_tolerance
+        weight: 280
+        label: Cckm Tsf Tolerance
+        type: integer
+        description: Cckm Tsf Tolerance (Integer, Integer)
+      -
+        id: 29
+        name: client_exclusion
+        weight: 290
+        label: Client Exclusion
+        type: boolean
+        description: Client Exclusion (Boolean)
+      -
+        id: 30
+        name: client_exclusion_timeout
+        weight: 300
+        label: Client Exclusion Timeout
+        type: integer
+        validation_maximum: 2147483647
+        description: "Client Exclusion Timeout (Integer) - Maximum value: 2147483647"
+      -
+        id: 31
+        name: client_rate_limit
+        weight: 310
+        label: Client Rate Limit
+        type: integer
+        description: Client Rate Limit (Integer, Integer)
+      -
+        id: 32
+        name: coverage_hole_detection
+        weight: 320
+        label: Coverage Hole Detection
+        type: boolean
+        description: Coverage Hole Detection (Boolean)
+      -
+        id: 33
+        name: directed_multicast_service
+        weight: 330
+        label: Directed Multicast Service
+        type: boolean
+        description: Directed Multicast Service (Boolean)
+      -
+        id: 34
+        name: egress_qos
+        weight: 340
+        label: Egress QoS
+        type: text
+        description: "Allowed values: PLATINUM, SILVER, GOLD, BRONZE."
+      -
+        id: 35
+        name: enabled
+        weight: 350
+        label: Enabled
+        type: boolean
+        description: Enabled (Boolean)
+      -
+        id: 36
+        name: external_auth_ip_address
+        weight: 360
+        label: External Auth IP Address
+        type: text
+        description: External Auth IP Address (String)
+      -
+        id: 37
+        name: fast_lane
+        weight: 370
+        label: Fast Lane
+        type: boolean
+        description: Fast Lane (Boolean)
+      -
+        id: 38
+        name: fast_transition
+        weight: 380
+        label: Fast Transition
+        type: text
+        description: "Allowed values: ADAPTIVE, DISABLE, ENABLE."
+      -
+        id: 39
+        name: fast_transition_over_the_distributed_system
+        weight: 390
+        label: Fast Transition Over The Distributed System
+        type: boolean
+        description: Fast Transition Over The Distributed System (Boolean)
+      -
+        id: 40
+        name: ghz24_policy
+        weight: 400
+        label: Ghz24 Policy
+        type: text
+        description: "Allowed values: dot11-g-only, dot11-bg-only."
+      -
+        id: 41
+        name: ghz6_policy_client_steering
+        weight: 410
+        label: Ghz6 Policy Client Steering
+        type: boolean
+        description: Ghz6 Policy Client Steering (Boolean)
+      -
+        id: 42
+        name: hex
+        weight: 420
+        label: Hex
+        type: boolean
+        description: Hex (Boolean)
+      -
+        id: 43
+        name: ingress_qos
+        weight: 430
+        label: Ingress QoS
+        type: text
+        description: "Allowed values: PLATINUM-UP, SILVER-UP, GOLD-UP, BRONZE-UP."
+      -
+        id: 44
+        name: l3_auth_type
+        weight: 440
+        label: L3 Auth Type
+        type: text
+        description: "Allowed values: open, web_auth."
+      -
+        id: 45
+        name: mac_filtering
+        weight: 450
+        label: MAC Filtering
+        type: boolean
+        description: MAC Filtering (Boolean)
+      -
+        id: 46
+        name: mft_client_protection
+        weight: 460
+        label: Mft Client Protection
+        type: text
+        description: "Allowed values: OPTIONAL, DISABLED, REQUIRED."
+      -
+        id: 47
+        name: multi_psk_settings
+        weight: 470
+        label: Multi Psk Settings
+        type: json
+        description: "Multi Psk Settings (Object)  Elements: - priority (required) - passphrase - passphrase_type"
+      -
+        id: 48
+        name: nas_options
+        weight: 480
+        label: Nas Options
+        type: json
+        description: Nas Options (List - String)
+      -
+        id: 49
+        name: neighbor_list
+        weight: 490
+        label: Neighbor List
+        type: boolean
+        description: Neighbor List (Boolean)
+      -
+        id: 50
+        name: open_ssid
+        weight: 500
+        label: Open Ssid
+        type: boolean
+        description: Open Ssid (Boolean)
+      -
+        id: 51
+        name: passphrase
+        weight: 510
+        label: Passphrase
+        type: text
+        description: Passphrase (String)
+      -
+        id: 52
+        name: posturing
+        weight: 520
+        label: Posturing
+        type: boolean
+        description: Posturing (Boolean)
+      -
+        id: 53
+        name: profile_name
+        weight: 530
+        label: Profile Name
+        type: text
+        description: Profile Name (String)
+      -
+        id: 54
+        name: protected_management_frame
+        weight: 540
+        label: Protected Management Frame
+        type: text
+        description: "Allowed values: REQUIRED, DISABLED, OPTIONAL."
+      -
+        id: 55
+        name: random_mac_filter
+        weight: 550
+        label: Random MAC Filter
+        type: boolean
+        description: Random MAC Filter (Boolean)
+      -
+        id: 56
+        name: rsn_cipher_suite_ccmp128
+        weight: 560
+        label: Rsn Cipher Suite Ccmp128
+        type: boolean
+        description: Rsn Cipher Suite Ccmp128 (Boolean)
+      -
+        id: 57
+        name: rsn_cipher_suite_ccmp256
+        weight: 570
+        label: Rsn Cipher Suite Ccmp256
+        type: boolean
+        description: Rsn Cipher Suite Ccmp256 (Boolean)
+      -
+        id: 58
+        name: rsn_cipher_suite_gcmp128
+        weight: 580
+        label: Rsn Cipher Suite Gcmp128
+        type: boolean
+        description: Rsn Cipher Suite Gcmp128 (Boolean)
+      -
+        id: 59
+        name: rsn_cipher_suite_gcmp256
+        weight: 590
+        label: Rsn Cipher Suite Gcmp256
+        type: boolean
+        description: Rsn Cipher Suite Gcmp256 (Boolean)
+      -
+        id: 60
+        name: session_timeout
+        weight: 600
+        label: Session Timeout
+        type: integer
+        description: Session Timeout (Integer, Integer)
+      -
+        id: 61
+        name: session_timeout_enable
+        weight: 610
+        label: Session Timeout Enable
+        type: boolean
+        description: Session Timeout Enable (Boolean)
+      -
+        id: 62
+        name: sleeping_client
+        weight: 620
+        label: Sleeping Client
+        type: boolean
+        description: Sleeping Client (Boolean)
+      -
+        id: 63
+        name: sleeping_client_timeout
+        weight: 630
+        label: Sleeping Client Timeout
+        type: integer
+        validation_minimum: 10
+        validation_maximum: 43200
+        description: "Sleeping Client Timeout (Integer) - Minimum value: 10 - Maximum value: 43200"
+      -
+        id: 64
+        name: ssid_radio_type
+        weight: 640
+        label: Ssid Radio Type
+        type: text
+        description: "Allowed values: Triple Band, 5GHz, 2.4GHz, 6GHz, 2.4GHz and 5GHz, 2.4GHz and 6GHz, 5GHz and 6GHz."
+      -
+        id: 65
+        name: web_passthrough
+        weight: 650
+        label: Web Passthrough
+        type: boolean
+        description: Web Passthrough (Boolean)
+      -
+        id: 66
+        name: wlan_band_select
+        weight: 660
+        label: Wlan Band Select
+        type: boolean
+        description: Wlan Band Select (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_rf_profiles
+    slug: cisco-cc-wireless-rf-profiles
+    verbose_name: Rf Profiles
+    verbose_name_plural: Rf Profiles
+    description: Rf Profiles (catalyst_center.wireless.rf_profiles).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: enable_radio_type_a
+        weight: 10
+        label: Enable Radio Type A
+        type: boolean
+        description: Enable Radio Type A (Boolean)
+        required: true
+      -
+        id: 2
+        name: enable_radio_type_b
+        weight: 20
+        label: Enable Radio Type B
+        type: boolean
+        description: Enable Radio Type B (Boolean)
+        required: true
+      -
+        id: 3
+        name: enable_radio_type_c
+        weight: 30
+        label: Enable Radio Type C
+        type: boolean
+        description: Enable Radio Type C (Boolean)
+        required: true
+      -
+        id: 4
+        name: name
+        weight: 40
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 5
+        name: default_rf_profile
+        weight: 50
+        label: Default Rf Profile
+        type: boolean
+        description: "Default Rf Profile (Boolean) - Default value: false"
+        default: false
+      -
+        id: 6
+        name: radio_type_a_properties
+        weight: 60
+        label: Radio Type A Properties
+        type: json
+        description: "Radio Type A Properties (Object)  Elements: - parent_profile - radio_channels - data_rates - mandatory_data_rates - power_threshold_v1 - rx_sop_threshold - min_power_level - max_power_level - chann..."
+      -
+        id: 7
+        name: radio_type_b_properties
+        weight: 70
+        label: Radio Type B Properties
+        type: json
+        description: "Radio Type B Properties (Object)  Elements: - parent_profile - radio_channels - data_rates - mandatory_data_rates - power_threshold_v1 - rx_sop_threshold - min_power_level - max_power_level - custo..."
+      -
+        id: 8
+        name: radio_type_c_properties
+        weight: 80
+        label: Radio Type C Properties
+        type: json
+        description: "Radio Type C Properties (Object)  Elements: - parent_profile - radio_channels - data_rates - mandatory_data_rates - power_threshold_v1 - rx_sop_threshold - min_power_level - max_power_level - enabl..."
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_interfaces
+    slug: cisco-cc-wireless-interfaces
+    verbose_name: Interfaces
+    verbose_name_plural: Interfaces
+    description: Interfaces (catalyst_center.wireless.interfaces).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: vlan_id
+        weight: 20
+        label: Vlan ID
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 4094
+        description: "Vlan ID (Integer) - Minimum value: 1 - Maximum value: 4094"
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_dot11be_profiles
+    slug: cisco-cc-wireless-dot11be-profiles
+    verbose_name: Dot11Be Profiles
+    verbose_name_plural: Dot11Be Profiles
+    description: Dot11Be Profiles (catalyst_center.wireless.dot11be_profiles).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: mu_mimo_down_link
+        weight: 20
+        label: Mu Mimo Down Link
+        type: boolean
+        description: Mu Mimo Down Link (Boolean)
+      -
+        id: 3
+        name: mu_mimo_up_link
+        weight: 30
+        label: Mu Mimo Up Link
+        type: boolean
+        description: Mu Mimo Up Link (Boolean)
+      -
+        id: 4
+        name: ofdma_down_link
+        weight: 40
+        label: Ofdma Down Link
+        type: boolean
+        description: Ofdma Down Link (Boolean)
+      -
+        id: 5
+        name: ofdma_multi_ru
+        weight: 50
+        label: Ofdma Multi Ru
+        type: boolean
+        description: Ofdma Multi Ru (Boolean)
+      -
+        id: 6
+        name: ofdma_up_link
+        weight: 60
+        label: Ofdma Up Link
+        type: boolean
+        description: Ofdma Up Link (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_ap_profiles
+    slug: cisco-cc-wireless-ap-profiles
+    verbose_name: Ap Profiles
+    verbose_name_plural: Ap Profiles
+    description: Ap Profiles (catalyst_center.wireless.ap_profiles).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: "Name (String)\n- Maximum length: 32 Max length: 32."
+        required: true
+        primary: true
+      -
+        id: 2
+        name: auth_type
+        weight: 20
+        label: Auth Type
+        type: text
+        description: "Allowed values: NO-AUTH, EAP-TLS, EAP-PEAP, EAP-FAST. (default NO-AUTH)"
+        default: NO-AUTH
+      -
+        id: 3
+        name: awips_enabled
+        weight: 30
+        label: Awips Enabled
+        type: boolean
+        description: "Awips Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 4
+        name: awips_forensic_enabled
+        weight: 40
+        label: Awips Forensic Enabled
+        type: boolean
+        description: "Awips Forensic Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 5
+        name: backhaul_client_access
+        weight: 50
+        label: Backhaul Client Access
+        type: boolean
+        description: Backhaul Client Access (Boolean)
+      -
+        id: 6
+        name: bridge_group_name
+        weight: 60
+        label: Bridge Group Name
+        type: text
+        description: "Bridge Group Name (String)\n- Maximum length: 10 Max length: 10."
+      -
+        id: 7
+        name: cdp_state
+        weight: 70
+        label: CDP State
+        type: boolean
+        description: "CDP State (Boolean) - Default value: false"
+        default: false
+      -
+        id: 8
+        name: client_limit
+        weight: 80
+        label: Client Limit
+        type: integer
+        validation_maximum: 1200
+        description: "Client Limit (Integer) - Maximum value: 1200"
+      -
+        id: 9
+        name: country_code
+        weight: 90
+        label: Country Code
+        type: text
+        description: "Allowed values: AF, AE, AL, AR, AT, AO, AU, BD, BA, BB, BE, BG, BH, BM, BN, BO, BR, BT, BY, CA, CD, CH, CI, CL, CM, CN, CO, CR, CU, CY, CZ, DE, DK, DO, DZ, EC, EE, EG, EL, ES, ET, FI, FJ, FR, GB, G..."
+      -
+        id: 10
+        name: description
+        weight: 100
+        label: Description
+        type: text
+        description: "Description (String)\n- Maximum length: 241 Max length: 241."
+      -
+        id: 11
+        name: dot1x_password
+        weight: 110
+        label: Dot1X Password
+        type: text
+        description: "Dot1X Password (String)\n- Maximum length: 120 Max length: 120."
+      -
+        id: 12
+        name: dot1x_username
+        weight: 120
+        label: Dot1X Username
+        type: text
+        description: "Dot1X Username (String)\n- Minimum length: 1\n- Maximum length: 32 Min length: 1."
+      -
+        id: 13
+        name: ghz24_backhaul_data_rates
+        weight: 130
+        label: Ghz24 Backhaul Data Rates
+        type: text
+        description: "Allowed values: auto, 802.11abg, 802.11ax, 802.11n."
+      -
+        id: 14
+        name: ghz5_backhaul_data_rates
+        weight: 140
+        label: Ghz5 Backhaul Data Rates
+        type: text
+        description: "Allowed values: auto, 802.11abg, 802.11ac, 802.11ax, 802.11n."
+      -
+        id: 15
+        name: management_enable_password
+        weight: 150
+        label: Management Enable Password
+        type: text
+        description: "Management Enable Password (String)\n- Minimum length: 8\n- Maximum length: 120 Min length: 8."
+      -
+        id: 16
+        name: management_password
+        weight: 160
+        label: Management Password
+        type: text
+        description: "Management Password (String)\n- Minimum length: 8\n- Maximum length: 120 Min length: 8."
+      -
+        id: 17
+        name: management_user_name
+        weight: 170
+        label: Management User Name
+        type: text
+        description: "Management User Name (String)\n- Minimum length: 1\n- Maximum length: 32 Min length: 1."
+      -
+        id: 18
+        name: mesh_enabled
+        weight: 180
+        label: Mesh Enabled
+        type: boolean
+        description: "Mesh Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 19
+        name: pmf_denial_enabled
+        weight: 190
+        label: Pmf Denial Enabled
+        type: boolean
+        description: "Pmf Denial Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 20
+        name: power_profile
+        weight: 200
+        label: Power Profile
+        type: text
+        description: Power Profile (String)
+      -
+        id: 21
+        name: range
+        weight: 210
+        label: Range
+        type: integer
+        validation_minimum: 150
+        validation_maximum: 132000
+        description: "Range (Integer) - Minimum value: 150 - Maximum value: 132000"
+      -
+        id: 22
+        name: rap_downlink_backhaul
+        weight: 220
+        label: Rap Downlink Backhaul
+        type: text
+        description: "Allowed values: 5 GHz, 2.4 GHz."
+      -
+        id: 23
+        name: remote_worker_enabled
+        weight: 230
+        label: Remote Worker Enabled
+        type: boolean
+        description: "Remote Worker Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 24
+        name: rogue_detection
+        weight: 240
+        label: Rogue Detection
+        type: boolean
+        description: "Rogue Detection (Boolean) - Default value: false"
+        default: false
+      -
+        id: 25
+        name: rogue_detection_min_rssi
+        weight: 250
+        label: Rogue Detection Min Rssi
+        type: integer
+        validation_minimum: -128
+        validation_maximum: -70
+        description: "Rogue Detection Min Rssi (Integer) - Default value: -90 - Minimum value: -128 - Maximum value: -70"
+        default: -90
+      -
+        id: 26
+        name: rogue_detection_report_interval
+        weight: 260
+        label: Rogue Detection Report Interval
+        type: integer
+        validation_minimum: 10
+        validation_maximum: 300
+        description: "Rogue Detection Report Interval (Integer) - Default value: 10 - Minimum value: 10 - Maximum value: 300"
+        default: 10
+      -
+        id: 27
+        name: rogue_detection_transient_interval
+        weight: 270
+        label: Rogue Detection Transient Interval
+        type: integer
+        description: Rogue Detection Transient Interval (Integer)
+      -
+        id: 28
+        name: ssh_enabled
+        weight: 280
+        label: SSH Enabled
+        type: boolean
+        description: "SSH Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 29
+        name: telnet_enabled
+        weight: 290
+        label: Telnet Enabled
+        type: boolean
+        description: "Telnet Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 30
+        name: time_zone
+        weight: 300
+        label: Time Zone
+        type: text
+        description: "Allowed values: Not Configured, Controller, Delta from Controller. (default Not Configured)"
+        default: Not Configured
+      -
+        id: 31
+        name: time_zone_offset_hour
+        weight: 310
+        label: Time Zone Offset Hour
+        type: integer
+        validation_minimum: -12
+        validation_maximum: 14
+        description: "Time Zone Offset Hour (Integer) - Minimum value: -12 - Maximum value: 14"
+      -
+        id: 32
+        name: time_zone_offset_minutes
+        weight: 320
+        label: Time Zone Offset Minutes
+        type: integer
+        validation_maximum: 59
+        description: "Time Zone Offset Minutes (Integer) - Maximum value: 59"
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_ap_profiles_calendar_power_profiles
+    slug: cisco-cc-wireless-ap-profiles-calendar-power-profiles
+    verbose_name: Calendar Power Profiles
+    verbose_name_plural: Calendar Power Profiles
+    description: Calendar Power Profiles (catalyst_center.wireless.ap_profiles.calendar_power_profiles).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ap_profile
+        type: object
+        label: Ap Profiles
+        related_object_type: custom-objects/cisco-cc-wireless-ap-profiles
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: power_profile
+        weight: 20
+        label: Power Profile
+        type: text
+        description: Power Profile (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: scheduler_end_time
+        weight: 30
+        label: Scheduler End Time
+        type: text
+        description: Scheduler End Time (String)
+        required: true
+      -
+        id: 4
+        name: scheduler_start_time
+        weight: 40
+        label: Scheduler Start Time
+        type: text
+        description: Scheduler Start Time (String)
+        required: true
+      -
+        id: 5
+        name: scheduler_type
+        weight: 50
+        label: Scheduler Type
+        type: text
+        description: "Allowed values: DAILY, WEEKLY, MONTHLY."
+        required: true
+      -
+        id: 6
+        name: scheduler_date
+        weight: 60
+        label: Scheduler Date
+        type: json
+        description: Scheduler Date (List - String)
+      -
+        id: 7
+        name: scheduler_day
+        weight: 70
+        label: Scheduler Day
+        type: json
+        description: Scheduler Day (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_power_profiles
+    slug: cisco-cc-wireless-power-profiles
+    verbose_name: Power Profiles
+    verbose_name_plural: Power Profiles
+    description: Power Profiles (catalyst_center.wireless.power_profiles).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: "Name (String)\n- Maximum length: 128 Max length: 128."
+        required: true
+        primary: true
+      -
+        id: 2
+        name: description
+        weight: 20
+        label: Description
+        type: text
+        description: "Description (String)\n- Maximum length: 128 Max length: 128."
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_power_profiles_rules
+    slug: cisco-cc-wireless-power-profiles-rules
+    verbose_name: Rules
+    verbose_name_plural: Rules
+    description: Rules (catalyst_center.wireless.power_profiles.rules).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: power_profile
+        type: object
+        label: Power Profiles
+        related_object_type: custom-objects/cisco-cc-wireless-power-profiles
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: interface_id
+        weight: 20
+        label: Interface ID
+        type: text
+        description: "Allowed values: GIGABITETHERNET0, GIGABITETHERNET1, LAN1, LAN2, LAN3, 6GHZ, 5GHZ, SECONDARY_5GHZ, 2_4GHZ, USB0."
+        required: true
+        primary: true
+      -
+        id: 3
+        name: interface_type
+        weight: 30
+        label: Interface Type
+        type: text
+        description: "Allowed values: ETHERNET, RADIO, USB."
+        required: true
+      -
+        id: 4
+        name: parameter_type
+        weight: 40
+        label: Parameter Type
+        type: text
+        description: "Allowed values: SPEED, SPATIALSTREAM, STATE."
+        required: true
+      -
+        id: 5
+        name: parameter_value
+        weight: 50
+        label: Parameter Value
+        type: text
+        description: "Allowed values: 5000MBPS, 2500MBPS, 1000MBPS, 100MBPS, EIGHT_BY_EIGHT, FOUR_BY_FOUR, THREE_BY_THREE, TWO_BY_TWO, ONE_BY_ONE, DISABLE."
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_anchor_groups
+    slug: cisco-cc-wireless-anchor-groups
+    verbose_name: Anchor Groups
+    verbose_name_plural: Anchor Groups
+    description: Anchor Groups (catalyst_center.wireless.anchor_groups).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: "Name (String)\n- Maximum length: 32 Max length: 32."
+        required: true
+        primary: true
+    removed_fields: []
+  -
+    name: cisco_cc_wireless_anchor_groups_mobility_anchors
+    slug: cisco-cc-wireless-anchor-groups-mobility-anchors
+    verbose_name: Mobility Anchors
+    verbose_name_plural: Mobility Anchors
+    description: Mobility Anchors (catalyst_center.wireless.anchor_groups.mobility_anchors).
+    group_name: Wireless
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: anchor_group
+        type: object
+        label: Anchor Groups
+        related_object_type: custom-objects/cisco-cc-wireless-anchor-groups
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: anchor_priority
+        weight: 20
+        label: Anchor Priority
+        type: text
+        description: "Allowed values: PRIMARY, SECONDARY, TERTIARY."
+        required: true
+        primary: true
+      -
+        id: 3
+        name: device_name
+        weight: 30
+        label: Device Name
+        type: text
+        description: Device Name (String)
+        required: true
+      -
+        id: 4
+        name: ip_address
+        weight: 40
+        label: IP Address
+        type: text
+        description: IP Address (String) - IPv4 or IPv6 address
+        required: true
+      -
+        id: 5
+        name: managed_anchor_wlc
+        weight: 50
+        label: Managed Anchor Wlc
+        type: boolean
+        description: Managed Anchor Wlc (Boolean)
+        required: true
+      -
+        id: 6
+        name: mac_address
+        weight: 60
+        label: MAC Address
+        type: text
+        description: MAC Address (String)
+      -
+        id: 7
+        name: mobility_group_name
+        weight: 70
+        label: Mobility Group Name
+        type: text
+        description: "Mobility Group Name (String)\n- Maximum length: 31 Max length: 31."
+      -
+        id: 8
+        name: peer_device_type
+        weight: 80
+        label: Peer Device Type
+        type: text
+        description: "Allowed values: IOS-XE, AIREOS."
+      -
+        id: 9
+        name: private_ip
+        weight: 90
+        label: Private IP
+        type: text
+        description: Private IP (String) - IPv4 or IPv6 address
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices
+    slug: cisco-cc-inventory-devices
+    verbose_name: Devices
+    verbose_name_plural: Devices
+    description: Devices (catalyst_center.inventory.devices).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: device_role
+        weight: 10
+        label: Device Role
+        type: text
+        description: "Allowed values: ACCESS, CORE, DISTRIBUTION, BORDER ROUTER."
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: site
+        weight: 30
+        label: Site
+        type: text
+        description: Site (String)
+        required: true
+      -
+        id: 4
+        name: state
+        weight: 40
+        label: State
+        type: text
+        description: "Allowed values: INIT, PNP, PROVISION, REPROVISION, ASSIGN, MARK_FOR_REPLACEMENT."
+        required: true
+      -
+        id: 5
+        name: ap_reboot_percentage
+        weight: 50
+        label: Ap Reboot Percentage
+        type: integer
+        description: "Allowed values: 5, 15, 25."
+      -
+        id: 6
+        name: clean_up_config
+        weight: 60
+        label: Clean Up Config
+        type: boolean
+        description: Clean Up Config (Boolean)
+      -
+        id: 7
+        name: dayn_templates
+        weight: 70
+        label: Dayn Templates
+        type: json
+        description: "Dayn Templates (Object)  Elements: - regular - composite - redeploy_template"
+      -
+        id: 8
+        name: device_ip
+        weight: 80
+        label: Device IP
+        type: text
+        description: Device IP (String) - IPv4 or IPv6 address
+      -
+        id: 9
+        name: enable_rolling_ap_upgrade
+        weight: 90
+        label: Enable Rolling Ap Upgrade
+        type: boolean
+        description: Enable Rolling Ap Upgrade (Boolean)
+      -
+        id: 10
+        name: enable_wireless
+        weight: 100
+        label: Enable Wireless
+        type: boolean
+        description: Enable Wireless (Boolean)
+      -
+        id: 11
+        name: fabric_roles
+        weight: 110
+        label: Fabric Roles
+        type: json
+        description: Fabric Roles (List - String)
+      -
+        id: 12
+        name: fabric_site
+        weight: 120
+        label: Fabric Site
+        type: text
+        description: Fabric Site (String)
+      -
+        id: 13
+        name: fabric_zone
+        weight: 130
+        label: Fabric Zone
+        type: text
+        description: Fabric Zone (String)
+      -
+        id: 14
+        name: fqdn_name
+        weight: 140
+        label: FQDN Name
+        type: text
+        description: FQDN Name (String)
+      -
+        id: 15
+        name: image_id
+        weight: 150
+        label: Image ID
+        type: text
+        description: Image ID (String)
+      -
+        id: 16
+        name: image_name
+        weight: 160
+        label: Image Name
+        type: text
+        description: Image Name (String)
+      -
+        id: 17
+        name: image_skip
+        weight: 170
+        label: Image Skip
+        type: boolean
+        description: Image Skip (Boolean)
+      -
+        id: 18
+        name: onboarding_template
+        weight: 180
+        label: Onboarding Template
+        type: json
+        description: "Onboarding Template (Object)  Elements: - name (required) - variables"
+      -
+        id: 19
+        name: pid
+        weight: 190
+        label: Pid
+        type: text
+        description: Pid (String, Null)
+      -
+        id: 20
+        name: primary_managed_ap_locations
+        weight: 200
+        label: Primary Managed Ap Locations
+        type: json
+        description: Primary Managed Ap Locations (List - String)
+      -
+        id: 21
+        name: rf_profile
+        weight: 210
+        label: Rf Profile
+        type: text
+        description: Rf Profile (String)
+      -
+        id: 22
+        name: secondary_managed_ap_locations
+        weight: 220
+        label: Secondary Managed Ap Locations
+        type: json
+        description: Secondary Managed Ap Locations (List - String)
+      -
+        id: 23
+        name: serial_number
+        weight: 230
+        label: Serial Number
+        type: text
+        description: Serial Number (String, Null)
+      -
+        id: 24
+        name: stack
+        weight: 240
+        label: Stack
+        type: json
+        description: "Stack (Object)  Elements: - top_of_stack_serial_number (required) - cabling_scheme (required)"
+      -
+        id: 25
+        name: nc_tags
+        weight: 250
+        label: Tags
+        type: json
+        description: Tags (List - String)
+      -
+        id: 26
+        name: type
+        weight: 260
+        label: Type
+        type: text
+        description: "Allowed values: AccessPoint."
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_onboarding_template_variables
+    slug: cisco-cc-inventory-devices-onboarding-template-variables
+    verbose_name: Variables
+    verbose_name_plural: Variables
+    description: Variables (catalyst_center.inventory.devices.onboarding_template.variables).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: value
+        weight: 20
+        label: Value
+        type: text
+        description: Value (String, Array)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_dayn_templates_regular
+    slug: cisco-cc-inventory-devices-dayn-templates-regular
+    verbose_name: Regular
+    verbose_name_plural: Regular
+    description: Regular (catalyst_center.inventory.devices.dayn_templates.regular).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: copying_config
+        weight: 20
+        label: Copying Config
+        type: boolean
+        description: Copying Config (Boolean)
+      -
+        id: 3
+        name: force_push_template
+        weight: 30
+        label: Force Push Template
+        type: boolean
+        description: Force Push Template (Boolean)
+      -
+        id: 4
+        name: redeploy_template
+        weight: 40
+        label: Redeploy Template
+        type: text
+        description: "Allowed values: ALWAYS, NEVER, ON_CHANGE."
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_dayn_templates_regular_variables
+    slug: cisco-cc-inventory-devices-dayn-templates-regular-variables
+    verbose_name: Variables
+    verbose_name_plural: Variables
+    description: Variables (catalyst_center.inventory.devices.dayn_templates.regular.variables).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: regular
+        type: object
+        label: Regular
+        related_object_type: custom-objects/cisco-cc-inventory-devices-dayn-templates-regular
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: value
+        weight: 30
+        label: Value
+        type: text
+        description: Value (String, Array)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_dayn_templates_composite
+    slug: cisco-cc-inventory-devices-dayn-templates-composite
+    verbose_name: Composite
+    verbose_name_plural: Composite
+    description: Composite (catalyst_center.inventory.devices.dayn_templates.composite).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: copying_config
+        weight: 20
+        label: Copying Config
+        type: boolean
+        description: Copying Config (Boolean)
+      -
+        id: 3
+        name: force_push_template
+        weight: 30
+        label: Force Push Template
+        type: boolean
+        description: Force Push Template (Boolean)
+      -
+        id: 4
+        name: redeploy_template
+        weight: 40
+        label: Redeploy Template
+        type: text
+        description: "Allowed values: ALWAYS, NEVER, ON_CHANGE."
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_dayn_templates_composite_variables
+    slug: cisco-cc-inventory-devices-dayn-templates-composite-variables
+    verbose_name: Variables
+    verbose_name_plural: Variables
+    description: Variables (catalyst_center.inventory.devices.dayn_templates.composite.variables).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: composite
+        type: object
+        label: Composite
+        related_object_type: custom-objects/cisco-cc-inventory-devices-dayn-templates-composite
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: template_name
+        weight: 30
+        label: Template Name
+        type: text
+        description: Template Name (String)
+        required: true
+      -
+        id: 4
+        name: value
+        weight: 40
+        label: Value
+        type: text
+        description: Value (String, Array)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_port_assignments
+    slug: cisco-cc-inventory-devices-port-assignments
+    verbose_name: Port Assignments
+    verbose_name_plural: Port Assignments
+    description: Port Assignments (catalyst_center.inventory.devices.port_assignments).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: device
+        type: object
+        label: Devices
+        related_object_type: custom-objects/cisco-cc-inventory-devices
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: connected_device_type
+        weight: 20
+        label: Connected Device Type
+        type: text
+        description: "Allowed values: USER_DEVICE, ACCESS_POINT, TRUNKING_DEVICE, AUTHENTICATOR_SWITCH, SUPPLICANT_BASED_EXTENDED_NODE."
+        required: true
+        primary: true
+      -
+        id: 3
+        name: authenticate_template_name
+        weight: 30
+        label: Authenticate Template Name
+        type: text
+        description: "Allowed values: No Authentication, Open Authentication, Closed Authentication, Low Impact."
+      -
+        id: 4
+        name: data_vlan_name
+        weight: 40
+        label: Data Vlan Name
+        type: text
+        description: Data Vlan Name (String)
+      -
+        id: 5
+        name: interface_description
+        weight: 50
+        label: Interface Description
+        type: text
+        description: Interface Description (String)
+      -
+        id: 6
+        name: interface_name
+        weight: 60
+        label: Interface Name
+        type: text
+        description: Interface Name (String)
+      -
+        id: 7
+        name: interfaces_range
+        weight: 70
+        label: Interfaces Range
+        type: text
+        validation_regex: ^[A-Za-z]+\d+(/\d+)+-\d+(/\d+)+$
+        description: Interfaces Range (String)
+      -
+        id: 8
+        name: security_group_name
+        weight: 80
+        label: Security Group Name
+        type: text
+        description: Security Group Name (String)
+      -
+        id: 9
+        name: voice_vlan_name
+        weight: 90
+        label: Voice Vlan Name
+        type: text
+        description: Voice Vlan Name (String)
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_devices_port_channels
+    slug: cisco-cc-inventory-devices-port-channels
+    verbose_name: Port Channels
+    verbose_name_plural: Port Channels
+    description: Port Channels (catalyst_center.inventory.devices.port_channels).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: device
+        type: object
+        label: Devices
+        related_object_type: custom-objects/cisco-cc-inventory-devices
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: connected_device_type
+        weight: 20
+        label: Connected Device Type
+        type: text
+        description: "Allowed values: TRUNK, EXTENDED_NODE."
+        required: true
+      -
+        id: 3
+        name: nc_id
+        weight: 30
+        label: ID
+        type: integer
+        description: ID (Integer)
+        required: true
+        primary: true
+      -
+        id: 4
+        name: interface_names
+        weight: 40
+        label: Interface Names
+        type: json
+        description: Interface Names (List - String)
+        required: true
+      -
+        id: 5
+        name: allowed_vlan_ranges
+        weight: 50
+        label: Allowed Vlan Ranges
+        type: text
+        description: Allowed Vlan Ranges (String)
+      -
+        id: 6
+        name: description
+        weight: 60
+        label: Description
+        type: text
+        description: Description (String)
+      -
+        id: 7
+        name: native_vlan_id
+        weight: 70
+        label: Native Vlan ID
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 4094
+        description: "Native Vlan ID (Integer) - Minimum value: 1 - Maximum value: 4094"
+      -
+        id: 8
+        name: protocol
+        weight: 80
+        label: Protocol
+        type: text
+        description: "Allowed values: ON, LACP, PAGP."
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_discovery
+    slug: cisco-cc-inventory-discovery
+    verbose_name: Discovery
+    verbose_name_plural: Discovery
+    description: Discovery (catalyst_center.inventory.discovery).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: cdp_level
+        weight: 20
+        label: CDP Level
+        type: integer
+        description: CDP Level (Integer)
+      -
+        id: 3
+        name: enable_password_list
+        weight: 30
+        label: Enable Password List
+        type: json
+        description: Enable Password List (List - String)
+      -
+        id: 4
+        name: global_credential_list
+        weight: 40
+        label: Global Credential List
+        type: json
+        description: Global Credential List (List - String)
+      -
+        id: 5
+        name: ip_address_list
+        weight: 50
+        label: IP Address List
+        type: text
+        description: IP Address List (String)
+      -
+        id: 6
+        name: ip_filter_list
+        weight: 60
+        label: IP Filter List
+        type: json
+        description: IP Filter List (List - String)
+      -
+        id: 7
+        name: lldp_level
+        weight: 70
+        label: LLDP Level
+        type: integer
+        description: LLDP Level (Integer)
+      -
+        id: 8
+        name: netconf_port
+        weight: 80
+        label: Netconf Port
+        type: text
+        description: Netconf Port (String)
+      -
+        id: 9
+        name: preferred_mgmt_ip_method
+        weight: 90
+        label: Preferred MGMT IP Method
+        type: text
+        description: "Allowed values: UseLoopBack, None."
+      -
+        id: 10
+        name: protocol_order
+        weight: 100
+        label: Protocol Order
+        type: text
+        description: Protocol Order (String)
+      -
+        id: 11
+        name: retry
+        weight: 110
+        label: Retry
+        type: integer
+        description: Retry (Integer)
+      -
+        id: 12
+        name: time_out
+        weight: 120
+        label: Time Out
+        type: integer
+        description: Time Out (Integer)
+      -
+        id: 13
+        name: type
+        weight: 130
+        label: Type
+        type: text
+        description: "Allowed values: Single, Range, Multi Range, CDP, LLDP, CIDR."
+      -
+        id: 14
+        name: user_name_list
+        weight: 140
+        label: User Name List
+        type: json
+        description: User Name List (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_inventory_tags
+    slug: cisco-cc-inventory-tags
+    verbose_name: Tags
+    verbose_name_plural: Tags
+    description: Tags (catalyst_center.inventory.tags).
+    group_name: Inventory
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: description
+        weight: 20
+        label: Description
+        type: text
+        description: Description (String)
+    removed_fields: []
+  -
+    name: cisco_cc_sites_areas
+    slug: cisco-cc-sites-areas
+    verbose_name: Areas
+    verbose_name_plural: Areas
+    description: Areas (catalyst_center.sites.areas).
+    group_name: Sites
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: cli_credentials
+        weight: 20
+        label: CLI Credentials
+        type: text
+        description: CLI Credentials (String)
+      -
+        id: 3
+        name: https_read_credentials
+        weight: 30
+        label: Https Read Credentials
+        type: text
+        description: Https Read Credentials (String)
+      -
+        id: 4
+        name: https_write_credentials
+        weight: 40
+        label: Https Write Credentials
+        type: text
+        description: Https Write Credentials (String)
+      -
+        id: 5
+        name: ip_pools_reservations
+        weight: 50
+        label: IP Pools Reservations
+        type: json
+        description: IP Pools Reservations (List - String)
+      -
+        id: 6
+        name: network_settings
+        weight: 60
+        label: Network Settings
+        type: json
+        description: "Network Settings (Object)  Elements: - aaa_servers - network - telemetry"
+      -
+        id: 7
+        name: parent_name
+        weight: 70
+        label: Parent Name
+        type: text
+        description: "Parent Name (String) - Default value: Global"
+        default: Global
+      -
+        id: 8
+        name: snmpv2_read_credentials
+        weight: 80
+        label: Snmpv2 Read Credentials
+        type: text
+        description: Snmpv2 Read Credentials (String)
+      -
+        id: 9
+        name: snmpv2_write_credentials
+        weight: 90
+        label: Snmpv2 Write Credentials
+        type: text
+        description: Snmpv2 Write Credentials (String)
+      -
+        id: 10
+        name: snmpv3_credentials
+        weight: 100
+        label: Snmpv3 Credentials
+        type: text
+        description: Snmpv3 Credentials (String)
+    removed_fields: []
+  -
+    name: cisco_cc_sites_buildings
+    slug: cisco-cc-sites-buildings
+    verbose_name: Buildings
+    verbose_name_plural: Buildings
+    description: Buildings (catalyst_center.sites.buildings).
+    group_name: Sites
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: address
+        weight: 20
+        label: Address
+        type: text
+        description: Address (String)
+      -
+        id: 3
+        name: cli_credentials
+        weight: 30
+        label: CLI Credentials
+        type: text
+        description: CLI Credentials (String)
+      -
+        id: 4
+        name: country
+        weight: 40
+        label: Country
+        type: text
+        description: Country (String)
+      -
+        id: 5
+        name: https_read_credentials
+        weight: 50
+        label: Https Read Credentials
+        type: text
+        description: Https Read Credentials (String)
+      -
+        id: 6
+        name: https_write_credentials
+        weight: 60
+        label: Https Write Credentials
+        type: text
+        description: Https Write Credentials (String)
+      -
+        id: 7
+        name: ip_pools_reservations
+        weight: 70
+        label: IP Pools Reservations
+        type: json
+        description: IP Pools Reservations (List - String)
+      -
+        id: 8
+        name: latitude
+        weight: 80
+        label: Latitude
+        type: decimal
+        description: Latitude (Number)
+      -
+        id: 9
+        name: longitude
+        weight: 90
+        label: Longitude
+        type: decimal
+        description: Longitude (Number)
+      -
+        id: 10
+        name: network_settings
+        weight: 100
+        label: Network Settings
+        type: json
+        description: "Network Settings (Object)  Elements: - aaa_servers - network - telemetry"
+      -
+        id: 11
+        name: parent_name
+        weight: 110
+        label: Parent Name
+        type: text
+        description: Parent Name (String)
+      -
+        id: 12
+        name: snmpv2_read_credentials
+        weight: 120
+        label: Snmpv2 Read Credentials
+        type: text
+        description: Snmpv2 Read Credentials (String)
+      -
+        id: 13
+        name: snmpv2_write_credentials
+        weight: 130
+        label: Snmpv2 Write Credentials
+        type: text
+        description: Snmpv2 Write Credentials (String)
+      -
+        id: 14
+        name: snmpv3_credentials
+        weight: 140
+        label: Snmpv3 Credentials
+        type: text
+        description: Snmpv3 Credentials (String)
+    removed_fields: []
+  -
+    name: cisco_cc_sites_floors
+    slug: cisco-cc-sites-floors
+    verbose_name: Floors
+    verbose_name_plural: Floors
+    description: Floors (catalyst_center.sites.floors).
+    group_name: Sites
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: cli_credentials
+        weight: 20
+        label: CLI Credentials
+        type: text
+        description: CLI Credentials (String)
+      -
+        id: 3
+        name: floor_number
+        weight: 30
+        label: Floor Number
+        type: integer
+        description: Floor Number (Integer)
+      -
+        id: 4
+        name: height
+        weight: 40
+        label: Height
+        type: decimal
+        description: "Height (Number) - Default value: 3"
+        default: 3.0
+      -
+        id: 5
+        name: https_read_credentials
+        weight: 50
+        label: Https Read Credentials
+        type: text
+        description: Https Read Credentials (String)
+      -
+        id: 6
+        name: https_write_credentials
+        weight: 60
+        label: Https Write Credentials
+        type: text
+        description: Https Write Credentials (String)
+      -
+        id: 7
+        name: image_path
+        weight: 70
+        label: Image Path
+        type: text
+        description: Image Path (String)
+      -
+        id: 8
+        name: ip_pools_reservations
+        weight: 80
+        label: IP Pools Reservations
+        type: json
+        description: IP Pools Reservations (List - String)
+      -
+        id: 9
+        name: length
+        weight: 90
+        label: Length
+        type: decimal
+        description: "Length (Number) - Default value: 30"
+        default: 30.0
+      -
+        id: 10
+        name: network_settings
+        weight: 100
+        label: Network Settings
+        type: json
+        description: "Network Settings (Object)  Elements: - aaa_servers - network - telemetry"
+      -
+        id: 11
+        name: parent_name
+        weight: 110
+        label: Parent Name
+        type: text
+        description: Parent Name (String)
+      -
+        id: 12
+        name: rf_model
+        weight: 120
+        label: Rf Model
+        type: text
+        description: "Allowed values: Cubes And Walled Offices, Drywall Office Only, Indoor High Ceiling, Outdoor Open Space, Free Space. (default Cubes And Walled Offices)"
+        default: Cubes And Walled Offices
+      -
+        id: 13
+        name: snmpv2_read_credentials
+        weight: 130
+        label: Snmpv2 Read Credentials
+        type: text
+        description: Snmpv2 Read Credentials (String)
+      -
+        id: 14
+        name: snmpv2_write_credentials
+        weight: 140
+        label: Snmpv2 Write Credentials
+        type: text
+        description: Snmpv2 Write Credentials (String)
+      -
+        id: 15
+        name: snmpv3_credentials
+        weight: 150
+        label: Snmpv3 Credentials
+        type: text
+        description: Snmpv3 Credentials (String)
+      -
+        id: 16
+        name: units_of_measure
+        weight: 160
+        label: Units Of Measure
+        type: text
+        description: "Allowed values: feet, meters. (default feet)"
+        default: feet
+      -
+        id: 17
+        name: width
+        weight: 170
+        label: Width
+        type: decimal
+        description: "Width (Number) - Default value: 30"
+        default: 30.0
+    removed_fields: []
+  -
+    name: cisco_cc_sites_floors_planned_access_points
+    slug: cisco-cc-sites-floors-planned-access-points
+    verbose_name: Planned Access Points
+    verbose_name_plural: Planned Access Points
+    description: Planned Access Points (catalyst_center.sites.floors.planned_access_points).
+    group_name: Sites
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: floor
+        type: object
+        label: Floors
+        related_object_type: custom-objects/cisco-cc-sites-floors
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: ap_type
+        weight: 20
+        label: Ap Type
+        type: text
+        description: Ap Type (String)
+        required: true
+      -
+        id: 3
+        name: name
+        weight: 30
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 4
+        name: position_x
+        weight: 40
+        label: Position X
+        type: decimal
+        description: Position X (Number)
+        required: true
+      -
+        id: 5
+        name: position_y
+        weight: 50
+        label: Position Y
+        type: decimal
+        description: Position Y (Number)
+        required: true
+      -
+        id: 6
+        name: mac_address
+        weight: 60
+        label: MAC Address
+        type: text
+        description: MAC Address (String)
+      -
+        id: 7
+        name: position_z
+        weight: 70
+        label: Position Z
+        type: decimal
+        description: Position Z (Number)
+    removed_fields: []
+  -
+    name: cisco_cc_sites_floors_planned_access_points_radios
+    slug: cisco-cc-sites-floors-planned-access-points-radios
+    verbose_name: Radios
+    verbose_name_plural: Radios
+    description: Radios (catalyst_center.sites.floors.planned_access_points.radios).
+    group_name: Sites
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: planned_access_point
+        type: object
+        label: Planned Access Points
+        related_object_type: custom-objects/cisco-cc-sites-floors-planned-access-points
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: band
+        weight: 20
+        label: Band
+        type: text
+        description: "Allowed values: 2.4, 5, 6."
+        required: true
+        primary: true
+      -
+        id: 3
+        name: antenna_azimuth
+        weight: 30
+        label: Antenna Azimuth
+        type: integer
+        description: Antenna Azimuth (Integer)
+      -
+        id: 4
+        name: antenna_elevation
+        weight: 40
+        label: Antenna Elevation
+        type: integer
+        description: Antenna Elevation (Integer)
+      -
+        id: 5
+        name: antenna_name
+        weight: 50
+        label: Antenna Name
+        type: text
+        description: Antenna Name (String)
+      -
+        id: 6
+        name: channel
+        weight: 60
+        label: Channel
+        type: integer
+        description: Channel (Integer)
+      -
+        id: 7
+        name: tx_power
+        weight: 70
+        label: TX Power
+        type: integer
+        description: TX Power (Integer)
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_aaa_servers
+    slug: cisco-cc-network-settings-aaa-servers
+    verbose_name: Aaa Servers
+    verbose_name_plural: Aaa Servers
+    description: Aaa Servers (catalyst_center.network_settings.aaa_servers).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: client_and_endpoint_aaa
+        weight: 20
+        label: Client And Endpoint AAA
+        type: json
+        description: "Client And Endpoint AAA (Object)  Elements: - server_type (required) - protocol (required) - primary_ip - secondary_ip - pan - shared_secret"
+      -
+        id: 3
+        name: network_aaa
+        weight: 30
+        label: Network AAA
+        type: json
+        description: "Network AAA (Object)  Elements: - server_type (required) - protocol (required) - primary_ip - secondary_ip - pan - shared_secret"
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_network
+    slug: cisco-cc-network-settings-network
+    verbose_name: Network
+    verbose_name_plural: Network
+    description: Network (catalyst_center.network_settings.network).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: banner
+        weight: 20
+        label: Banner
+        type: text
+        description: Banner (String)
+      -
+        id: 3
+        name: dhcp_servers
+        weight: 30
+        label: DHCP Servers
+        type: json
+        description: DHCP Servers (List - String)
+      -
+        id: 4
+        name: dns_servers
+        weight: 40
+        label: DNS Servers
+        type: json
+        description: DNS Servers (List - String)
+      -
+        id: 5
+        name: domain_name
+        weight: 50
+        label: Domain Name
+        type: text
+        description: Domain Name (String)
+      -
+        id: 6
+        name: ntp_servers
+        weight: 60
+        label: NTP Servers
+        type: json
+        description: NTP Servers (List - String)
+      -
+        id: 7
+        name: timezone
+        weight: 70
+        label: Timezone
+        type: text
+        description: Timezone (String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_telemetry
+    slug: cisco-cc-network-settings-telemetry
+    verbose_name: Telemetry
+    verbose_name_plural: Telemetry
+    description: Telemetry (catalyst_center.network_settings.telemetry).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: catalyst_center_as_network_collector
+        weight: 10
+        label: Catalyst Center AS Network Collector
+        type: boolean
+        description: "Catalyst Center AS Network Collector (Boolean) - Default value: true"
+        default: true
+        required: true
+      -
+        id: 2
+        name: catalyst_center_as_snmp_server
+        weight: 20
+        label: Catalyst Center AS SNMP Server
+        type: boolean
+        description: "Catalyst Center AS SNMP Server (Boolean) - Default value: true"
+        default: true
+        required: true
+      -
+        id: 3
+        name: catalyst_center_as_syslog_server
+        weight: 30
+        label: Catalyst Center AS Syslog Server
+        type: boolean
+        description: "Catalyst Center AS Syslog Server (Boolean) - Default value: true"
+        default: true
+        required: true
+      -
+        id: 4
+        name: enable_netflow_collector_on_devices
+        weight: 40
+        label: Enable Netflow Collector On Devices
+        type: boolean
+        description: "Enable Netflow Collector On Devices (Boolean) - Default value: false"
+        default: false
+        required: true
+      -
+        id: 5
+        name: name
+        weight: 50
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 6
+        name: wired_data_collection
+        weight: 60
+        label: Wired Data Collection
+        type: boolean
+        description: "Wired Data Collection (Boolean) - Default value: true"
+        default: true
+        required: true
+      -
+        id: 7
+        name: wireless_telemetry
+        weight: 70
+        label: Wireless Telemetry
+        type: boolean
+        description: "Wireless Telemetry (Boolean) - Default value: false"
+        default: false
+        required: true
+      -
+        id: 8
+        name: netflow_collector_ip_address
+        weight: 80
+        label: Netflow Collector IP Address
+        type: text
+        description: Netflow Collector IP Address (String) - IPv4 or IPv6 address
+      -
+        id: 9
+        name: netflow_collector_port
+        weight: 90
+        label: Netflow Collector Port
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 65535
+        description: "Netflow Collector Port (Integer) - Minimum value: 1 - Maximum value: 65535"
+      -
+        id: 10
+        name: snmp_servers
+        weight: 100
+        label: SNMP Servers
+        type: json
+        description: SNMP Servers (List - String)
+      -
+        id: 11
+        name: syslog_servers
+        weight: 110
+        label: Syslog Servers
+        type: json
+        description: Syslog Servers (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_cli_credentials
+    slug: cisco-cc-network-settings-device-credentials-cli-credentials
+    verbose_name: Cli Credentials
+    verbose_name_plural: Cli Credentials
+    description: Cli Credentials (catalyst_center.network_settings.device_credentials.cli_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: password
+        weight: 20
+        label: Password
+        type: text
+        description: Password (String)
+        required: true
+      -
+        id: 3
+        name: username
+        weight: 30
+        label: Username
+        type: text
+        description: Username (String)
+        required: true
+      -
+        id: 4
+        name: enable
+        weight: 40
+        label: Enable
+        type: text
+        description: Enable (String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_https_read_credentials
+    slug: cisco-cc-network-settings-device-credentials-https-read-credentials
+    verbose_name: Https Read Credentials
+    verbose_name_plural: Https Read Credentials
+    description: Https Read Credentials (catalyst_center.network_settings.device_credentials.https_read_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: password
+        weight: 20
+        label: Password
+        type: text
+        description: Password (String)
+        required: true
+      -
+        id: 3
+        name: username
+        weight: 30
+        label: Username
+        type: text
+        description: Username (String)
+        required: true
+      -
+        id: 4
+        name: port
+        weight: 40
+        label: Port
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 65535
+        description: "Port (Integer) - Default value: 443 - Minimum value: 1 - Maximum value: 65535"
+        default: 443
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_https_write_credentials
+    slug: cisco-cc-network-settings-device-credentials-https-write-credentials
+    verbose_name: Https Write Credentials
+    verbose_name_plural: Https Write Credentials
+    description: Https Write Credentials (catalyst_center.network_settings.device_credentials.https_write_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: password
+        weight: 20
+        label: Password
+        type: text
+        description: Password (String)
+        required: true
+      -
+        id: 3
+        name: username
+        weight: 30
+        label: Username
+        type: text
+        description: Username (String)
+        required: true
+      -
+        id: 4
+        name: port
+        weight: 40
+        label: Port
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 65535
+        description: "Port (Integer) - Default value: 443 - Minimum value: 1 - Maximum value: 65535"
+        default: 443
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_snmpv3_credentials
+    slug: cisco-cc-network-settings-device-credentials-snmpv3-credentials
+    verbose_name: Snmpv3 Credentials
+    verbose_name_plural: Snmpv3 Credentials
+    description: Snmpv3 Credentials (catalyst_center.network_settings.device_credentials.snmpv3_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: auth_password
+        weight: 10
+        label: Auth Password
+        type: text
+        description: Auth Password (String)
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: privacy_password
+        weight: 30
+        label: Privacy Password
+        type: text
+        description: Privacy Password (String)
+        required: true
+      -
+        id: 4
+        name: snmp_mode
+        weight: 40
+        label: SNMP Mode
+        type: text
+        description: "Allowed values: AUTHPRIV, AUTHNOPRIV, NOAUTHNOPRIV."
+        required: true
+      -
+        id: 5
+        name: username
+        weight: 50
+        label: Username
+        type: text
+        description: Username (String)
+        required: true
+      -
+        id: 6
+        name: auth_type
+        weight: 60
+        label: Auth Type
+        type: text
+        description: "Allowed values: SHA, MD5. (default SHA)"
+        default: SHA
+      -
+        id: 7
+        name: privacy_type
+        weight: 70
+        label: Privacy Type
+        type: text
+        description: "Allowed values: AES256, AES192, AES128. (default AES128)"
+        default: AES128
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_snmpv2_read_credentials
+    slug: cisco-cc-network-settings-device-credentials-snmpv2-read-credentials
+    verbose_name: Snmpv2 Read Credentials
+    verbose_name_plural: Snmpv2 Read Credentials
+    description: Snmpv2 Read Credentials (catalyst_center.network_settings.device_credentials.snmpv2_read_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: read_community
+        weight: 20
+        label: Read Community
+        type: text
+        description: Read Community (String)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_device_credentials_snmpv2_write_credentials
+    slug: cisco-cc-network-settings-device-credentials-snmpv2-write-credentials
+    verbose_name: Snmpv2 Write Credentials
+    verbose_name_plural: Snmpv2 Write Credentials
+    description: Snmpv2 Write Credentials (catalyst_center.network_settings.device_credentials.snmpv2_write_credentials).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: write_community
+        weight: 20
+        label: Write Community
+        type: text
+        description: Write Community (String)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_ip_pools
+    slug: cisco-cc-network-settings-ip-pools
+    verbose_name: Ip Pools
+    verbose_name_plural: Ip Pools
+    description: Ip Pools (catalyst_center.network_settings.ip_pools).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ip_address_space
+        weight: 10
+        label: IP Address Space
+        type: text
+        description: "Allowed values: IPv4, IPv6. (default IPv4)"
+        default: IPv4
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: dhcp_servers
+        weight: 30
+        label: DHCP Servers
+        type: json
+        description: DHCP Servers (List - String)
+      -
+        id: 4
+        name: dns_servers
+        weight: 40
+        label: DNS Servers
+        type: json
+        description: DNS Servers (List - String)
+      -
+        id: 5
+        name: gateway
+        weight: 50
+        label: Gateway
+        type: text
+        description: Gateway (String)
+      -
+        id: 6
+        name: ip_pool_cidr
+        weight: 60
+        label: IP Pool Cidr
+        type: text
+        description: IP Pool Cidr (String) - IPv4 or IPv6 address
+      -
+        id: 7
+        name: type
+        weight: 70
+        label: Type
+        type: text
+        description: "Allowed values: Generic, Tunnel. (default Generic)"
+        default: Generic
+    removed_fields: []
+  -
+    name: cisco_cc_network_settings_ip_pools_reservations
+    slug: cisco-cc-network-settings-ip-pools-reservations
+    verbose_name: Ip Pools Reservations
+    verbose_name_plural: Ip Pools Reservations
+    description: Ip Pools Reservations (catalyst_center.network_settings.ip_pools.ip_pools_reservations).
+    group_name: Network Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ip_pool
+        type: object
+        label: Ip Pools
+        related_object_type: custom-objects/cisco-cc-network-settings-ip-pools
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: dhcp_servers
+        weight: 30
+        label: DHCP Servers
+        type: json
+        description: DHCP Servers (List - String)
+      -
+        id: 4
+        name: dns_servers
+        weight: 40
+        label: DNS Servers
+        type: json
+        description: DNS Servers (List - String)
+      -
+        id: 5
+        name: gateway
+        weight: 50
+        label: Gateway
+        type: text
+        description: Gateway (String) - IPv4 or IPv6 address
+      -
+        id: 6
+        name: prefix_length
+        weight: 60
+        label: Prefix Length
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 120
+        description: "Prefix Length (Integer) - Minimum value: 1 - Maximum value: 120"
+      -
+        id: 7
+        name: subnet
+        weight: 70
+        label: Subnet
+        type: text
+        description: Subnet (String) - IPv4 or IPv6 address
+      -
+        id: 8
+        name: type
+        weight: 80
+        label: Type
+        type: text
+        description: "Allowed values: Generic, LAN, WAN, management, service. (default Generic)"
+        default: Generic
+    removed_fields: []
+  -
+    name: cisco_cc_system_settings_authentication_and_policy_servers_aaa
+    slug: cisco-cc-system-settings-authentication-and-policy-servers-aaa
+    verbose_name: Aaa
+    verbose_name_plural: Aaa
+    description: Aaa (catalyst_center.system_settings.authentication_and_policy_servers.aaa).
+    group_name: System Settings
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ip_address
+        weight: 10
+        label: IP Address
+        type: text
+        description: IP Address (String) - IPv4 or IPv6 address
+        required: true
+        primary: true
+      -
+        id: 2
+        name: protocols
+        weight: 20
+        label: Protocols
+        type: json
+        description: "Protocols (Object)  Elements: - tacacs - radius"
+        required: true
+      -
+        id: 3
+        name: retries
+        weight: 30
+        label: Retries
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 3
+        description: "Retries (Integer) - Minimum value: 1 - Maximum value: 3"
+        required: true
+      -
+        id: 4
+        name: shared_secret
+        weight: 40
+        label: Shared Secret
+        type: text
+        description: Shared Secret (String)
+        required: true
+      -
+        id: 5
+        name: timeout
+        weight: 50
+        label: Timeout
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 20
+        description: "Timeout (Integer) - Minimum value: 2 - Maximum value: 20"
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_switching
+    slug: cisco-cc-network-profiles-switching
+    verbose_name: Switching
+    verbose_name_plural: Switching
+    description: Switching (catalyst_center.network_profiles.switching).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: dayn_templates
+        weight: 20
+        label: Dayn Templates
+        type: json
+        description: Dayn Templates (List - String)
+      -
+        id: 3
+        name: onboarding_templates
+        weight: 30
+        label: Onboarding Templates
+        type: json
+        description: Onboarding Templates (List - String)
+      -
+        id: 4
+        name: sites
+        weight: 40
+        label: Sites
+        type: json
+        description: Sites (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_wireless
+    slug: cisco-cc-network-profiles-wireless
+    verbose_name: Wireless
+    verbose_name_plural: Wireless
+    description: Wireless (catalyst_center.network_profiles.wireless).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: additional_interfaces
+        weight: 20
+        label: Additional Interfaces
+        type: json
+        description: Additional Interfaces (List - String)
+      -
+        id: 3
+        name: sites
+        weight: 30
+        label: Sites
+        type: json
+        description: Sites (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_wireless_ssid_details
+    slug: cisco-cc-network-profiles-wireless-ssid-details
+    verbose_name: Ssid Details
+    verbose_name_plural: Ssid Details
+    description: Ssid Details (catalyst_center.network_profiles.wireless.ssid_details).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: wireless
+        type: object
+        label: Wireless
+        related_object_type: custom-objects/cisco-cc-network-profiles-wireless
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: anchor_group_name
+        weight: 20
+        label: Anchor Group Name
+        type: text
+        description: Anchor Group Name (String)
+      -
+        id: 3
+        name: dot11be_profile_name
+        weight: 30
+        label: Dot11Be Profile Name
+        type: text
+        description: Dot11Be Profile Name (String)
+      -
+        id: 4
+        name: enable_fabric
+        weight: 40
+        label: Enable Fabric
+        type: boolean
+        description: Enable Fabric (Boolean)
+      -
+        id: 5
+        name: enable_flex_connect
+        weight: 50
+        label: Enable Flex Connect
+        type: boolean
+        description: Enable Flex Connect (Boolean)
+      -
+        id: 6
+        name: interface_name
+        weight: 60
+        label: Interface Name
+        type: text
+        description: "Interface Name (String) - Default value: management"
+        default: management
+      -
+        id: 7
+        name: local_to_vlan
+        weight: 70
+        label: Local To Vlan
+        type: integer
+        description: Local To Vlan (Integer)
+      -
+        id: 8
+        name: name
+        weight: 80
+        label: Name
+        type: text
+        description: Name (String)
+        primary: true
+      -
+        id: 9
+        name: vlan_group_name
+        weight: 90
+        label: Vlan Group Name
+        type: text
+        description: Vlan Group Name (String)
+      -
+        id: 10
+        name: wlan_profile_name
+        weight: 100
+        label: Wlan Profile Name
+        type: text
+        description: Wlan Profile Name (String)
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_wireless_ap_zones
+    slug: cisco-cc-network-profiles-wireless-ap-zones
+    verbose_name: Ap Zones
+    verbose_name_plural: Ap Zones
+    description: Ap Zones (catalyst_center.network_profiles.wireless.ap_zones).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: wireless
+        type: object
+        label: Wireless
+        related_object_type: custom-objects/cisco-cc-network-profiles-wireless
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: rf_profile_name
+        weight: 30
+        label: Rf Profile Name
+        type: text
+        description: Rf Profile Name (String)
+        required: true
+      -
+        id: 4
+        name: ssids
+        weight: 40
+        label: Ssids
+        type: json
+        description: Ssids (List - String)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_wireless_site_tags
+    slug: cisco-cc-network-profiles-wireless-site-tags
+    verbose_name: Site Tags
+    verbose_name_plural: Site Tags
+    description: Site Tags (catalyst_center.network_profiles.wireless.site_tags).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: wireless
+        type: object
+        label: Wireless
+        related_object_type: custom-objects/cisco-cc-network-profiles-wireless
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: ap_profile_name
+        weight: 20
+        label: Ap Profile Name
+        type: text
+        description: Ap Profile Name (String)
+        required: true
+      -
+        id: 3
+        name: name
+        weight: 30
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 4
+        name: sites
+        weight: 40
+        label: Sites
+        type: json
+        description: Sites (List - String)
+        required: true
+      -
+        id: 5
+        name: flex_profile_name
+        weight: 50
+        label: Flex Profile Name
+        type: text
+        description: "Flex Profile Name (String) - Default value: default-flex-profile"
+        default: default-flex-profile
+    removed_fields: []
+  -
+    name: cisco_cc_network_profiles_wireless_policy_tags
+    slug: cisco-cc-network-profiles-wireless-policy-tags
+    verbose_name: Policy Tags
+    verbose_name_plural: Policy Tags
+    description: Policy Tags (catalyst_center.network_profiles.wireless.policy_tags).
+    group_name: Network Profiles
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: wireless
+        type: object
+        label: Wireless
+        related_object_type: custom-objects/cisco-cc-network-profiles-wireless
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: sites
+        weight: 30
+        label: Sites
+        type: json
+        description: Sites (List - String)
+        required: true
+      -
+        id: 4
+        name: ap_zones
+        weight: 40
+        label: Ap Zones
+        type: json
+        description: Ap Zones (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_lan_automation
+    slug: cisco-cc-lan-automation
+    verbose_name: Lan Automation
+    verbose_name_plural: Lan Automation
+    description: Lan Automation (catalyst_center.lan_automation).
+    group_name: Lan Automation
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: discovered_device_site_name_hierarchy
+        weight: 10
+        label: Discovered Device Site Name Hierarchy
+        type: text
+        description: Discovered Device Site Name Hierarchy (String)
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: primary_device_management_ip_address
+        weight: 30
+        label: Primary Device Management IP Address
+        type: text
+        description: Primary Device Management IP Address (String) - IPv4 or IPv6 address
+        required: true
+      -
+        id: 4
+        name: status
+        weight: 40
+        label: Status
+        type: text
+        description: "Allowed values: START, STOP."
+        required: true
+      -
+        id: 5
+        name: type
+        weight: 50
+        label: Type
+        type: text
+        description: "Allowed values: link, devices."
+        required: true
+      -
+        id: 6
+        name: advertise_lan_automation_routes_into_bgp
+        weight: 60
+        label: Advertise Lan Automation Routes Into BGP
+        type: boolean
+        description: Advertise Lan Automation Routes Into BGP (Boolean)
+      -
+        id: 7
+        name: discovery_level
+        weight: 70
+        label: Discovery Level
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 5
+        description: "Discovery Level (Integer) - Minimum value: 1 - Maximum value: 5"
+      -
+        id: 8
+        name: discovery_timeout
+        weight: 80
+        label: Discovery Timeout
+        type: integer
+        validation_minimum: 20
+        validation_maximum: 10080
+        description: "Discovery Timeout (Integer) - Minimum value: 20 - Maximum value: 10080"
+      -
+        id: 9
+        name: host_name_prefix
+        weight: 90
+        label: Host Name Prefix
+        type: text
+        description: Host Name Prefix (String)
+      -
+        id: 10
+        name: isis_domain_password
+        weight: 100
+        label: ISIS Domain Password
+        type: text
+        description: ISIS Domain Password (String)
+      -
+        id: 11
+        name: multicast_enabled
+        weight: 110
+        label: Multicast Enabled
+        type: boolean
+        description: Multicast Enabled (Boolean)
+      -
+        id: 12
+        name: primary_device_interface_names
+        weight: 120
+        label: Primary Device Interface Names
+        type: json
+        description: Primary Device Interface Names (List - String)
+      -
+        id: 13
+        name: secondary_device_management_ip_address
+        weight: 130
+        label: Secondary Device Management IP Address
+        type: text
+        description: Secondary Device Management IP Address (String) - IPv4 or IPv6 address
+    removed_fields: []
+  -
+    name: cisco_cc_lan_automation_ip_pools
+    slug: cisco-cc-lan-automation-ip-pools
+    verbose_name: Ip Pools
+    verbose_name_plural: Ip Pools
+    description: Ip Pools (catalyst_center.lan_automation.ip_pools).
+    group_name: Lan Automation
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: lan_automation
+        type: object
+        label: Lan Automation
+        related_object_type: custom-objects/cisco-cc-lan-automation
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: role
+        weight: 30
+        label: Role
+        type: text
+        description: "Allowed values: PRINCIPAL_IP_ADDRESS_POOL, LINK_OVERLAPPING_IP_POOL."
+    removed_fields: []
+  -
+    name: cisco_cc_lan_automation_discovery_devices
+    slug: cisco-cc-lan-automation-discovery-devices
+    verbose_name: Discovery Devices
+    verbose_name_plural: Discovery Devices
+    description: Discovery Devices (catalyst_center.lan_automation.discovery_devices).
+    group_name: Lan Automation
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: lan_automation
+        type: object
+        label: Lan Automation
+        related_object_type: custom-objects/cisco-cc-lan-automation
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: device_serial_number
+        weight: 20
+        label: Device Serial Number
+        type: text
+        description: Device Serial Number (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: device_host_name
+        weight: 30
+        label: Device Host Name
+        type: text
+        description: Device Host Name (String)
+      -
+        id: 4
+        name: device_management_ip_address
+        weight: 40
+        label: Device Management IP Address
+        type: text
+        description: Device Management IP Address (String) - IPv4 or IPv6 address
+      -
+        id: 5
+        name: device_site_name_hierarchy
+        weight: 50
+        label: Device Site Name Hierarchy
+        type: text
+        description: Device Site Name Hierarchy (String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_l3_virtual_networks
+    slug: cisco-cc-fabric-l3-virtual-networks
+    verbose_name: L3 Virtual Networks
+    verbose_name_plural: L3 Virtual Networks
+    description: L3 Virtual Networks (catalyst_center.fabric.l3_virtual_networks).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: anchor_site
+        weight: 20
+        label: Anchor Site
+        type: text
+        description: Anchor Site (String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_extranet_policies
+    slug: cisco-cc-fabric-extranet-policies
+    verbose_name: Extranet Policies
+    verbose_name_plural: Extranet Policies
+    description: Extranet Policies (catalyst_center.fabric.extranet_policies).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: provider_virtual_network
+        weight: 20
+        label: Provider Virtual Network
+        type: text
+        description: Provider Virtual Network (String)
+        required: true
+      -
+        id: 3
+        name: subscriber_virtual_networks
+        weight: 30
+        label: Subscriber Virtual Networks
+        type: json
+        description: Subscriber Virtual Networks (List - String)
+        required: true
+      -
+        id: 4
+        name: fabric_sites
+        weight: 40
+        label: Fabric Sites
+        type: json
+        description: Fabric Sites (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_transits
+    slug: cisco-cc-fabric-transits
+    verbose_name: Transits
+    verbose_name_plural: Transits
+    description: Transits (catalyst_center.fabric.transits).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: type
+        weight: 20
+        label: Type
+        type: text
+        description: "Allowed values: IP_BASED_TRANSIT, SDA_LISP_PUB_SUB_TRANSIT, SDA_LISP_BGP_TRANSIT. (default IP_BASED_TRANSIT)"
+        default: IP_BASED_TRANSIT
+        required: true
+      -
+        id: 3
+        name: autonomous_system_number
+        weight: 30
+        label: Autonomous System Number
+        type: integer
+        validation_minimum: 1
+        description: "Autonomous System Number (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295 Maximum: 4294967295."
+      -
+        id: 4
+        name: control_plane_devices
+        weight: 40
+        label: Control Plane Devices
+        type: json
+        description: Control Plane Devices (List - String)
+      -
+        id: 5
+        name: multicast_over_sda_transit
+        weight: 50
+        label: Multicast Over Sda Transit
+        type: boolean
+        description: "Multicast Over Sda Transit (Boolean) - Default value: false"
+        default: false
+      -
+        id: 6
+        name: routing_protocol_name
+        weight: 60
+        label: Routing Protocol Name
+        type: text
+        description: "Allowed values: BGP. (default BGP)"
+        default: BGP
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites
+    slug: cisco-cc-fabric-sites
+    verbose_name: Fabric Sites
+    verbose_name_plural: Fabric Sites
+    description: Fabric Sites (catalyst_center.fabric.fabric_sites).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: authentication_template
+        weight: 20
+        label: Authentication Template
+        type: json
+        description: "Authentication Template (Object)  Elements: - name (required) - dot1x_to_mab_fallback_timeout - wake_on_lan - number_of_hosts - bpdu_guard - authentication_order - pre_auth_acl"
+      -
+        id: 3
+        name: l3_virtual_networks
+        weight: 30
+        label: L3 Virtual Networks
+        type: json
+        description: L3 Virtual Networks (List - String)
+      -
+        id: 4
+        name: multicast
+        weight: 40
+        label: Multicast
+        type: json
+        description: "Multicast (Object)  Elements: - replication_mode - wireless_multicast_enabled - virtual_networks"
+      -
+        id: 5
+        name: pub_sub_enabled
+        weight: 50
+        label: Pub Sub Enabled
+        type: boolean
+        description: "Pub Sub Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 6
+        name: reconfigure
+        weight: 60
+        label: Reconfigure
+        type: boolean
+        description: Reconfigure (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_authentication_template_pre_auth_acl_access_contracts
+    slug: cisco-cc-fabric-sites-authentication-template-pre-auth-acl-access-contracts
+    verbose_name: Access Contracts
+    verbose_name_plural: Access Contracts
+    description: Access Contracts (catalyst_center.fabric.fabric_sites.authentication_template.pre_auth_acl.access_contracts).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: action
+        weight: 10
+        label: Action
+        type: text
+        description: "Allowed values: PERMIT, DENY."
+        required: true
+        primary: true
+      -
+        id: 2
+        name: port
+        weight: 20
+        label: Port
+        type: text
+        description: "Allowed values: domain, bootpc, bootps."
+        required: true
+      -
+        id: 3
+        name: protocol
+        weight: 30
+        label: Protocol
+        type: text
+        description: "Allowed values: TCP, UDP, TCP_UDP."
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_l2_virtual_networks
+    slug: cisco-cc-fabric-sites-l2-virtual-networks
+    verbose_name: L2 Virtual Networks
+    verbose_name_plural: L2 Virtual Networks
+    description: L2 Virtual Networks (catalyst_center.fabric.fabric_sites.l2_virtual_networks).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: fabric_site
+        type: object
+        label: Fabric Sites
+        related_object_type: custom-objects/cisco-cc-fabric-sites
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: associated_l3_virtual_network_name
+        weight: 30
+        label: Associated L3 Virtual Network Name
+        type: text
+        description: Associated L3 Virtual Network Name (String)
+      -
+        id: 4
+        name: fabric_enabled_wireless
+        weight: 40
+        label: Fabric Enabled Wireless
+        type: boolean
+        description: Fabric Enabled Wireless (Boolean)
+      -
+        id: 5
+        name: traffic_type
+        weight: 50
+        label: Traffic Type
+        type: text
+        description: "Allowed values: DATA, VOICE."
+      -
+        id: 6
+        name: vlan_id
+        weight: 60
+        label: Vlan ID
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 4093
+        description: "Vlan ID (Integer) - Minimum value: 2 - Maximum value: 4093"
+      -
+        id: 7
+        name: vlan_name
+        weight: 70
+        label: Vlan Name
+        type: text
+        description: Vlan Name (String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_anycast_gateways
+    slug: cisco-cc-fabric-sites-anycast-gateways
+    verbose_name: Anycast Gateways
+    verbose_name_plural: Anycast Gateways
+    description: Anycast Gateways (catalyst_center.fabric.fabric_sites.anycast_gateways).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: fabric_site
+        type: object
+        label: Fabric Sites
+        related_object_type: custom-objects/cisco-cc-fabric-sites
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: ip_pool_name
+        weight: 20
+        label: IP Pool Name
+        type: text
+        description: IP Pool Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: auto_generate_vlan_name
+        weight: 30
+        label: Auto Generate Vlan Name
+        type: boolean
+        description: "Auto Generate Vlan Name (Boolean) - Default value: false"
+        default: false
+      -
+        id: 4
+        name: critical_pool
+        weight: 40
+        label: Critical Pool
+        type: boolean
+        description: "Critical Pool (Boolean) - Default value: false"
+        default: false
+      -
+        id: 5
+        name: group_based_policy_enforcement_enabled
+        weight: 50
+        label: Group Based Policy Enforcement Enabled
+        type: boolean
+        description: Group Based Policy Enforcement Enabled (Boolean)
+      -
+        id: 6
+        name: intra_subnet_routing_enabled
+        weight: 60
+        label: Intra Subnet Routing Enabled
+        type: boolean
+        description: "Intra Subnet Routing Enabled (Boolean) - Default value: false"
+        default: false
+      -
+        id: 7
+        name: ip_directed_broadcast
+        weight: 70
+        label: IP Directed Broadcast
+        type: boolean
+        description: "IP Directed Broadcast (Boolean) - Default value: false"
+        default: false
+      -
+        id: 8
+        name: l3_virtual_network
+        weight: 80
+        label: L3 Virtual Network
+        type: text
+        description: L3 Virtual Network (String)
+      -
+        id: 9
+        name: layer2_flooding
+        weight: 90
+        label: Layer2 Flooding
+        type: boolean
+        description: "Layer2 Flooding (Boolean) - Default value: false"
+        default: false
+      -
+        id: 10
+        name: multiple_ip_to_mac_addresses
+        weight: 100
+        label: Multiple IP To MAC Addresses
+        type: boolean
+        description: "Multiple IP To MAC Addresses (Boolean) - Default value: false"
+        default: false
+      -
+        id: 11
+        name: pool_type
+        weight: 110
+        label: Pool Type
+        type: text
+        description: Pool Type (String, Null)
+      -
+        id: 12
+        name: security_group_name
+        weight: 120
+        label: Security Group Name
+        type: text
+        description: Security Group Name (String)
+      -
+        id: 13
+        name: supplicant_based_extended_node_onboarding
+        weight: 130
+        label: Supplicant Based Extended Node Onboarding
+        type: boolean
+        description: Supplicant Based Extended Node Onboarding (Boolean)
+      -
+        id: 14
+        name: tcp_mss_adjustment
+        weight: 140
+        label: Tcp Mss Adjustment
+        type: integer
+        validation_minimum: 500
+        validation_maximum: 1440
+        description: "Tcp Mss Adjustment (Integer) - Minimum value: 500 - Maximum value: 1440"
+      -
+        id: 15
+        name: traffic_type
+        weight: 150
+        label: Traffic Type
+        type: text
+        description: "Allowed values: DATA, VOICE. (default DATA)"
+        default: DATA
+      -
+        id: 16
+        name: vlan_id
+        weight: 160
+        label: Vlan ID
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 4093
+        description: "Vlan ID (Integer) - Minimum value: 2 - Maximum value: 4093"
+      -
+        id: 17
+        name: vlan_name
+        weight: 170
+        label: Vlan Name
+        type: text
+        description: Vlan Name (String)
+      -
+        id: 18
+        name: wireless_pool
+        weight: 180
+        label: Wireless Pool
+        type: boolean
+        description: "Wireless Pool (Boolean) - Default value: false"
+        default: false
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_wireless_ssids
+    slug: cisco-cc-fabric-sites-wireless-ssids
+    verbose_name: Wireless Ssids
+    verbose_name_plural: Wireless Ssids
+    description: Wireless Ssids (catalyst_center.fabric.fabric_sites.wireless_ssids).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: fabric_site
+        type: object
+        label: Fabric Sites
+        related_object_type: custom-objects/cisco-cc-fabric-sites
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: vlan_name
+        weight: 30
+        label: Vlan Name
+        type: text
+        description: Vlan Name (String)
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_fabric_zones
+    slug: cisco-cc-fabric-sites-fabric-zones
+    verbose_name: Fabric Zones
+    verbose_name_plural: Fabric Zones
+    description: Fabric Zones (catalyst_center.fabric.fabric_sites.fabric_zones).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: fabric_site
+        type: object
+        label: Fabric Sites
+        related_object_type: custom-objects/cisco-cc-fabric-sites
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: anycast_gateways
+        weight: 30
+        label: Anycast Gateways
+        type: json
+        description: Anycast Gateways (List - String)
+      -
+        id: 4
+        name: authentication_template
+        weight: 40
+        label: Authentication Template
+        type: json
+        description: "Authentication Template (Object)  Elements: - name (required) - dot1x_to_mab_fallback_timeout - wake_on_lan - number_of_hosts - bpdu_guard - authentication_order - pre_auth_acl"
+      -
+        id: 5
+        name: l2_virtual_networks
+        weight: 50
+        label: L2 Virtual Networks
+        type: json
+        description: L2 Virtual Networks (List - String)
+      -
+        id: 6
+        name: l3_virtual_networks
+        weight: 60
+        label: L3 Virtual Networks
+        type: json
+        description: L3 Virtual Networks (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_fabric_zones_authentication_template_pre_auth_acl_b93fe822
+    slug: cisco-cc-fabric-sites-fabric-zones-authentication-template-pre-auth-acl-b93fe822
+    verbose_name: Access Contracts
+    verbose_name_plural: Access Contracts
+    description: Access Contracts (catalyst_center.fabric.fabric_sites.fabric_zones.authentication_template.pre_auth_acl.access_contracts).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: action
+        weight: 10
+        label: Action
+        type: text
+        description: "Allowed values: PERMIT, DENY."
+        required: true
+        primary: true
+      -
+        id: 2
+        name: port
+        weight: 20
+        label: Port
+        type: text
+        description: "Allowed values: domain, bootpc, bootps."
+        required: true
+      -
+        id: 3
+        name: protocol
+        weight: 30
+        label: Protocol
+        type: text
+        description: "Allowed values: TCP, UDP, TCP_UDP."
+        required: true
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_multicast_virtual_networks
+    slug: cisco-cc-fabric-sites-multicast-virtual-networks
+    verbose_name: Virtual Networks
+    verbose_name_plural: Virtual Networks
+    description: Virtual Networks (catalyst_center.fabric.fabric_sites.multicast.virtual_networks).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ip_pool_name
+        weight: 10
+        label: IP Pool Name
+        type: text
+        description: IP Pool Name (String)
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: ipv4_ssm_ranges
+        weight: 30
+        label: Ipv4 Ssm Ranges
+        type: json
+        description: Ipv4 Ssm Ranges (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_sites_multicast_virtual_networks_multicast_rps
+    slug: cisco-cc-fabric-sites-multicast-virtual-networks-multicast-rps
+    verbose_name: Multicast Rps
+    verbose_name_plural: Multicast Rps
+    description: Multicast Rps (catalyst_center.fabric.fabric_sites.multicast.virtual_networks.multicast_rps).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: virtual_network
+        type: object
+        label: Virtual Networks
+        related_object_type: custom-objects/cisco-cc-fabric-sites-multicast-virtual-networks
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: rp_location
+        weight: 30
+        label: Rp Location
+        type: text
+        description: "Allowed values: FABRIC, EXTERNAL."
+        required: true
+      -
+        id: 4
+        name: fabric_rps
+        weight: 40
+        label: Fabric Rps
+        type: json
+        description: Fabric Rps (List - String)
+      -
+        id: 5
+        name: ipv4_address
+        weight: 50
+        label: Ipv4 Address
+        type: text
+        description: Ipv4 Address (String) - IPv4 or IPv6 address
+      -
+        id: 6
+        name: ipv4_asm_ranges
+        weight: 60
+        label: Ipv4 Asm Ranges
+        type: json
+        description: Ipv4 Asm Ranges (List - String)
+      -
+        id: 7
+        name: ipv6_address
+        weight: 70
+        label: IPv6 Address
+        type: text
+        description: IPv6 Address (String) - IPv4 or IPv6 address
+      -
+        id: 8
+        name: ipv6_asm_ranges
+        weight: 80
+        label: IPv6 Asm Ranges
+        type: json
+        description: IPv6 Asm Ranges (List - String)
+      -
+        id: 9
+        name: is_default_v4_rp
+        weight: 90
+        label: Is Default V4 Rp
+        type: boolean
+        description: Is Default V4 Rp (Boolean)
+      -
+        id: 10
+        name: is_default_v6_rp
+        weight: 100
+        label: Is Default V6 Rp
+        type: boolean
+        description: Is Default V6 Rp (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices
+    slug: cisco-cc-fabric-border-devices
+    verbose_name: Border Devices
+    verbose_name_plural: Border Devices
+    description: Border Devices (catalyst_center.fabric.border_devices).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: border_types
+        weight: 10
+        label: Border Types
+        type: json
+        description: Border Types (List - String)
+        required: true
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: affinity_id_decider
+        weight: 30
+        label: Affinity ID Decider
+        type: integer
+        validation_maximum: 2147483647
+        description: "Affinity ID Decider (Integer) - Maximum value: 2147483647"
+      -
+        id: 4
+        name: affinity_id_prime
+        weight: 40
+        label: Affinity ID Prime
+        type: integer
+        validation_maximum: 2147483647
+        description: "Affinity ID Prime (Integer) - Maximum value: 2147483647"
+      -
+        id: 5
+        name: border_priority
+        weight: 50
+        label: Border Priority
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 10
+        description: "Border Priority (Integer) - Minimum value: 1 - Maximum value: 10"
+      -
+        id: 6
+        name: connected_to_internet
+        weight: 60
+        label: Connected To Internet
+        type: boolean
+        description: Connected To Internet (Boolean)
+      -
+        id: 7
+        name: default_exit
+        weight: 70
+        label: Default Exit
+        type: boolean
+        description: Default Exit (Boolean)
+      -
+        id: 8
+        name: external_handoff_pool
+        weight: 80
+        label: External Handoff Pool
+        type: text
+        description: External Handoff Pool (String)
+      -
+        id: 9
+        name: import_external_routes
+        weight: 90
+        label: Import External Routes
+        type: boolean
+        description: Import External Routes (Boolean)
+      -
+        id: 10
+        name: l2_handoffs
+        weight: 100
+        label: L2 Handoffs
+        type: json
+        description: "L2 Handoffs (Object)  Elements: - l2_without_anycast_gateway - l2_with_anycast_gateway"
+      -
+        id: 11
+        name: local_autonomous_system_number
+        weight: 110
+        label: Local Autonomous System Number
+        type: integer
+        validation_minimum: 1
+        description: "Local Autonomous System Number (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295 Maximum: 4294967295."
+      -
+        id: 12
+        name: multicast_over_transit
+        weight: 120
+        label: Multicast Over Transit
+        type: boolean
+        description: Multicast Over Transit (Boolean)
+      -
+        id: 13
+        name: prepend_autonomous_system_count
+        weight: 130
+        label: Prepend Autonomous System Count
+        type: integer
+        validation_minimum: 1
+        validation_maximum: 10
+        description: "Prepend Autonomous System Count (Integer) - Minimum value: 1 - Maximum value: 10"
+      -
+        id: 14
+        name: sda_transit
+        weight: 140
+        label: Sda Transit
+        type: text
+        description: Sda Transit (String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices_l2_handoffs_l2_without_anycast_gateway_vlans
+    slug: cisco-cc-fabric-border-devices-l2-handoffs-l2-without-anycast-gateway-vlans
+    verbose_name: Vlans
+    verbose_name_plural: Vlans
+    description: Vlans (catalyst_center.fabric.border_devices.l2_handoffs.l2_without_anycast_gateway.vlans).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: external_vlan
+        weight: 20
+        label: External Vlan
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 4094
+        description: "External Vlan (Integer) - Minimum value: 2 - Maximum value: 4094"
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices_l2_handoffs_l2_with_anycast_gateway
+    slug: cisco-cc-fabric-border-devices-l2-handoffs-l2-with-anycast-gateway
+    verbose_name: L2 With Anycast Gateway
+    verbose_name_plural: L2 With Anycast Gateway
+    description: L2 With Anycast Gateway (catalyst_center.fabric.border_devices.l2_handoffs.l2_with_anycast_gateway).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: ip_pool_name
+        weight: 10
+        label: IP Pool Name
+        type: text
+        description: IP Pool Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: l3_virtual_network
+        weight: 20
+        label: L3 Virtual Network
+        type: text
+        description: L3 Virtual Network (String)
+        required: true
+      -
+        id: 3
+        name: external_vlan
+        weight: 30
+        label: External Vlan
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 4094
+        description: "External Vlan (Integer) - Minimum value: 2 - Maximum value: 4094"
+      -
+        id: 4
+        name: interfaces
+        weight: 40
+        label: Interfaces
+        type: json
+        description: Interfaces (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices_l3_handoffs
+    slug: cisco-cc-fabric-border-devices-l3-handoffs
+    verbose_name: L3 Handoffs
+    verbose_name_plural: L3 Handoffs
+    description: L3 Handoffs (catalyst_center.fabric.border_devices.l3_handoffs).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: border_device
+        type: object
+        label: Border Devices
+        related_object_type: custom-objects/cisco-cc-fabric-border-devices
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices_l3_handoffs_interfaces
+    slug: cisco-cc-fabric-border-devices-l3-handoffs-interfaces
+    verbose_name: Interfaces
+    verbose_name_plural: Interfaces
+    description: Interfaces (catalyst_center.fabric.border_devices.l3_handoffs.interfaces).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: l3_handoff
+        type: object
+        label: L3 Handoffs
+        related_object_type: custom-objects/cisco-cc-fabric-border-devices-l3-handoffs
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+    removed_fields: []
+  -
+    name: cisco_cc_fabric_border_devices_l3_handoffs_interfaces_virtual_networks
+    slug: cisco-cc-fabric-border-devices-l3-handoffs-interfaces-virtual-networks
+    verbose_name: Virtual Networks
+    verbose_name_plural: Virtual Networks
+    description: Virtual Networks (catalyst_center.fabric.border_devices.l3_handoffs.interfaces.virtual_networks).
+    group_name: Fabric
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: interface
+        type: object
+        label: Interfaces
+        related_object_type: custom-objects/cisco-cc-fabric-border-devices-l3-handoffs-interfaces
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: vlan
+        weight: 30
+        label: Vlan
+        type: integer
+        validation_minimum: 2
+        validation_maximum: 4093
+        description: "Vlan (Integer) - Minimum value: 2 - Maximum value: 4093"
+        required: true
+      -
+        id: 4
+        name: local_ip_address
+        weight: 40
+        label: Local IP Address
+        type: text
+        description: Local IP Address (String) - IPv4 or IPv6 address
+      -
+        id: 5
+        name: local_ipv6_address
+        weight: 50
+        label: Local IPv6 Address
+        type: text
+        description: Local IPv6 Address (String) - IPv4 or IPv6 address
+      -
+        id: 6
+        name: peer_ip_address
+        weight: 60
+        label: Peer IP Address
+        type: text
+        description: Peer IP Address (String) - IPv4 or IPv6 address
+      -
+        id: 7
+        name: peer_ipv6_address
+        weight: 70
+        label: Peer IPv6 Address
+        type: text
+        description: Peer IPv6 Address (String) - IPv4 or IPv6 address
+      -
+        id: 8
+        name: tcp_mss_adjustment
+        weight: 80
+        label: Tcp Mss Adjustment
+        type: integer
+        validation_minimum: 500
+        validation_maximum: 1440
+        description: "Tcp Mss Adjustment (Integer) - Minimum value: 500 - Maximum value: 1440"
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects
+    slug: cisco-cc-templates-projects
+    verbose_name: Projects
+    verbose_name_plural: Projects
+    description: Projects (catalyst_center.templates.projects).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: description
+        weight: 20
+        label: Description
+        type: text
+        description: Description (String)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_onboarding_templates
+    slug: cisco-cc-templates-projects-onboarding-templates
+    verbose_name: Onboarding Templates
+    verbose_name_plural: Onboarding Templates
+    description: Onboarding Templates (catalyst_center.templates.projects.onboarding_templates).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: project
+        type: object
+        label: Projects
+        related_object_type: custom-objects/cisco-cc-templates-projects
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: composite
+        weight: 30
+        label: Composite
+        type: boolean
+        description: Composite (Boolean)
+      -
+        id: 4
+        name: containing_templates
+        weight: 40
+        label: Containing Templates
+        type: json
+        description: Containing Templates (List - String)
+      -
+        id: 5
+        name: description
+        weight: 50
+        label: Description
+        type: text
+        description: Description (String)
+      -
+        id: 6
+        name: language
+        weight: 60
+        label: Language
+        type: text
+        description: "Allowed values: JINJA, VELOCITY."
+      -
+        id: 7
+        name: redeploy_template
+        weight: 70
+        label: Redeploy Template
+        type: text
+        description: "Allowed values: ALWAYS, NEVER, ON_CHANGE."
+      -
+        id: 8
+        name: software_type
+        weight: 80
+        label: Software Type
+        type: text
+        description: Software Type (String)
+      -
+        id: 9
+        name: software_version
+        weight: 90
+        label: Software Version
+        type: text
+        description: Software Version (String)
+      -
+        id: 10
+        name: nc_tags
+        weight: 100
+        label: Tags
+        type: json
+        description: Tags (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_onboarding_templates_device_types
+    slug: cisco-cc-templates-projects-onboarding-templates-device-types
+    verbose_name: Device Types
+    verbose_name_plural: Device Types
+    description: Device Types (catalyst_center.templates.projects.onboarding_templates.device_types).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: onboarding_template
+        type: object
+        label: Onboarding Templates
+        related_object_type: custom-objects/cisco-cc-templates-projects-onboarding-templates
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: product_family
+        weight: 20
+        label: Product Family
+        type: text
+        description: Product Family (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: product_series
+        weight: 30
+        label: Product Series
+        type: text
+        description: Product Series (String)
+      -
+        id: 4
+        name: product_type
+        weight: 40
+        label: Product Type
+        type: text
+        description: Product Type (String)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_onboarding_templates_variables
+    slug: cisco-cc-templates-projects-onboarding-templates-variables
+    verbose_name: Variables
+    verbose_name_plural: Variables
+    description: Variables (catalyst_center.templates.projects.onboarding_templates.variables).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: onboarding_template
+        type: object
+        label: Onboarding Templates
+        related_object_type: custom-objects/cisco-cc-templates-projects-onboarding-templates
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: data_type
+        weight: 20
+        label: Data Type
+        type: text
+        description: "Allowed values: STRING, INTEGER, IPADDRESS, MACADDRESS, SECTIONDIVIDER."
+        required: true
+      -
+        id: 3
+        name: name
+        weight: 30
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 4
+        name: additional_info
+        weight: 40
+        label: Additional Info
+        type: text
+        description: Additional Info (String)
+      -
+        id: 5
+        name: default_value
+        weight: 50
+        label: Default Value
+        type: text
+        description: Default Value (String)
+      -
+        id: 6
+        name: field_name
+        weight: 60
+        label: Field Name
+        type: text
+        description: Field Name (String)
+      -
+        id: 7
+        name: hint_text
+        weight: 70
+        label: Hint Text
+        type: text
+        description: Hint Text (String)
+      -
+        id: 8
+        name: required
+        weight: 80
+        label: Required
+        type: boolean
+        description: Required (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_dayn_templates
+    slug: cisco-cc-templates-projects-dayn-templates
+    verbose_name: Dayn Templates
+    verbose_name_plural: Dayn Templates
+    description: Dayn Templates (catalyst_center.templates.projects.dayn_templates).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: project
+        type: object
+        label: Projects
+        related_object_type: custom-objects/cisco-cc-templates-projects
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: name
+        weight: 20
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: composite
+        weight: 30
+        label: Composite
+        type: boolean
+        description: Composite (Boolean)
+      -
+        id: 4
+        name: containing_templates
+        weight: 40
+        label: Containing Templates
+        type: json
+        description: Containing Templates (List - String)
+      -
+        id: 5
+        name: description
+        weight: 50
+        label: Description
+        type: text
+        description: Description (String)
+      -
+        id: 6
+        name: language
+        weight: 60
+        label: Language
+        type: text
+        description: "Allowed values: JINJA, VELOCITY."
+      -
+        id: 7
+        name: redeploy_template
+        weight: 70
+        label: Redeploy Template
+        type: text
+        description: "Allowed values: ALWAYS, NEVER, ON_CHANGE."
+      -
+        id: 8
+        name: software_type
+        weight: 80
+        label: Software Type
+        type: text
+        description: Software Type (String)
+      -
+        id: 9
+        name: software_version
+        weight: 90
+        label: Software Version
+        type: text
+        description: Software Version (String)
+      -
+        id: 10
+        name: nc_tags
+        weight: 100
+        label: Tags
+        type: json
+        description: Tags (List - String)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_dayn_templates_device_types
+    slug: cisco-cc-templates-projects-dayn-templates-device-types
+    verbose_name: Device Types
+    verbose_name_plural: Device Types
+    description: Device Types (catalyst_center.templates.projects.dayn_templates.device_types).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: dayn_template
+        type: object
+        label: Dayn Templates
+        related_object_type: custom-objects/cisco-cc-templates-projects-dayn-templates
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: product_family
+        weight: 20
+        label: Product Family
+        type: text
+        description: Product Family (String)
+        required: true
+        primary: true
+      -
+        id: 3
+        name: product_series
+        weight: 30
+        label: Product Series
+        type: text
+        description: Product Series (String)
+      -
+        id: 4
+        name: product_type
+        weight: 40
+        label: Product Type
+        type: text
+        description: Product Type (String)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_projects_dayn_templates_variables
+    slug: cisco-cc-templates-projects-dayn-templates-variables
+    verbose_name: Variables
+    verbose_name_plural: Variables
+    description: Variables (catalyst_center.templates.projects.dayn_templates.variables).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: dayn_template
+        type: object
+        label: Dayn Templates
+        related_object_type: custom-objects/cisco-cc-templates-projects-dayn-templates
+        required: true
+        on_delete_behavior: cascade
+        weight: 10
+      -
+        id: 2
+        name: data_type
+        weight: 20
+        label: Data Type
+        type: text
+        description: "Allowed values: STRING, INTEGER, IPADDRESS, MACADDRESS, SECTIONDIVIDER."
+        required: true
+      -
+        id: 3
+        name: name
+        weight: 30
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 4
+        name: additional_info
+        weight: 40
+        label: Additional Info
+        type: text
+        description: Additional Info (String)
+      -
+        id: 5
+        name: default_value
+        weight: 50
+        label: Default Value
+        type: text
+        description: Default Value (String)
+      -
+        id: 6
+        name: field_name
+        weight: 60
+        label: Field Name
+        type: text
+        description: Field Name (String)
+      -
+        id: 7
+        name: hint_text
+        weight: 70
+        label: Hint Text
+        type: text
+        description: Hint Text (String)
+      -
+        id: 8
+        name: required
+        weight: 80
+        label: Required
+        type: boolean
+        description: Required (Boolean)
+    removed_fields: []
+  -
+    name: cisco_cc_templates_tags
+    slug: cisco-cc-templates-tags
+    verbose_name: Tags
+    verbose_name_plural: Tags
+    description: Tags (catalyst_center.templates.tags).
+    group_name: Templates
+    menu_name: Cisco Catalyst Center
+    fields:
+      -
+        id: 1
+        name: name
+        weight: 10
+        label: Name
+        type: text
+        description: Name (String)
+        required: true
+        primary: true
+      -
+        id: 2
+        name: description
+        weight: 20
+        label: Description
+        type: text
+        description: Description (String)
+    removed_fields: []

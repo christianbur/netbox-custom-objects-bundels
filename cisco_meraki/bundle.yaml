@@ -1,0 +1,10 @@
+name: cisco_meraki
+verbose_name: "Cisco Meraki"
+description: >
+  Custom Object Types modelling the full Cisco Meraki netascode data model
+  (auto-generated from netascode schema.json meraki section, 307 COTs). Covers
+  domains, organizations, networks, devices, wireless, switch and appliance
+  configuration. Parent/child relationships use object FK fields; inline nested
+  objects and primitive arrays are stored as json fields. Enumerations use text
+  fields (allowed values in each field description) so the bundle imports without
+  external choice sets.

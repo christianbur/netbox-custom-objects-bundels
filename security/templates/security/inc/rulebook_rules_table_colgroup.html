@@ -1,0 +1,18 @@
+{% if rules_flat_columns %}
+<colgroup>
+  {% if rules_show_selection_column %}
+  <col class="nsm-rules-col nsm-rules-col--select"
+       data-col-id="_select"
+       data-default-width="40"
+       data-min-width="32"
+       style="width: 40px; min-width: 32px">
+  {% endif %}
+  {% for col in rules_flat_columns %}
+  <col class="nsm-rules-col"
+       data-col-id="{{ col.col_id }}"
+       data-default-width="{{ col.default_width_px }}"
+       data-min-width="{{ col.min_width_px }}"
+       style="width: {{ col.width_px }}px; min-width: {{ col.min_width_px }}px">
+  {% endfor %}
+</colgroup>
+{% endif %}

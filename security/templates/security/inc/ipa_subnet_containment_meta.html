@@ -1,0 +1,14 @@
+{% load i18n %}
+{% comment %}
+Parent prefix/CIDR for the Parent column (plain link/text, no pill).
+Expects cidr; name and url are optional.
+{% endcomment %}
+<span class="nsm-ipa-cell-parent-hint"{% if name %} title="{% blocktrans with name=name parent=cidr %}Contained in {{ parent }} ({{ name }}){% endblocktrans %}"{% else %} title="{% blocktrans with parent=cidr %}Contained in {{ parent }}{% endblocktrans %}"{% endif %}>
+  {% if url %}
+  <a href="{{ url }}" class="nsm-ipa-cell-cidr-link" onclick="event.stopPropagation();">
+    <span class="nsm-addr-prefix-text" data-cidr="{{ cidr }}">{{ cidr }}</span>
+  </a>
+  {% else %}
+  <span class="nsm-addr-prefix-text" data-cidr="{{ cidr }}">{{ cidr }}</span>
+  {% endif %}
+</span>

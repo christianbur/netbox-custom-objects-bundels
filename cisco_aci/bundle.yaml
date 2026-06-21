@@ -1,0 +1,10 @@
+name: cisco_aci
+verbose_name: "Cisco ACI"
+description: >
+  Custom Object Types modelling the full Cisco ACI / APIC netascode data model
+  (auto-generated from netascode schema.json apic section, 390 COTs). Covers
+  tenants, access policies, fabric policies, pod policies and bootstrap.
+  Parent/child relationships use object FK fields; inline nested objects and
+  primitive arrays are stored as json fields. Enumerations use text fields
+  (allowed values in each field description) so the bundle imports without
+  external choice sets.

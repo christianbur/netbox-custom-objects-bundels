@@ -1,0 +1,7 @@
+name: ipam_tree
+verbose_name: "IPAM Tree"
+description: >
+  Demo local plugin for the Custom Objects "object proxy" feature. Bundles a
+  proxy Custom Object Type (ip-tree) plus an "IP Tree" COT view that renders a
+  live, read-only IPAM hierarchy: ipam/prefix as roots/branches and
+  ipam/ipaddress as leaves. Nothing is written to the database.

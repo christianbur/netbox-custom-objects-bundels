@@ -1,0 +1,22 @@
+name: security
+verbose_name: "Security"
+description: >
+  Network Security Management bundle for the Custom Objects COT-views system.
+  Provides the 10 NSM policy-object Custom Object Types (action, service,
+  service group, address, address group, label, zone, business app, network
+  app, object link) derived from netbox-nsm, plus a concrete Rulebook COT whose
+  rows are policy rules. Ships three COT views — a full rulebook table, a
+  zone/policy matrix, and an IP analyzer (merged IPAM tree) — bound dynamically
+  to their respective COTs via the schema `views` field. The Rulebook COT view
+  ships the NSM rule viewer chrome (comma / +N cell modes, grouped columns,
+  row grouping, IP Analyzer) from ``local/security/templates`` and
+  ``local/security/plugin_assets/``. NetBox references
+  (IPAM prefix/IP/range, devices, interfaces, VLANs, contact groups) are modelled
+  as object/multiobject fields; enumerations use text fields with allowed values
+  in each description, and nsm_config lives verbatim in the COT metadata field.
+
+  Demo data (import/purge via ``scripts/security_demo.py``):
+    defaults   — Permit, Deny, Drop + common UDP/TCP services (DNS-UDP, NTP, …)
+    starter    — 250×250 zone matrix on ``security-rulebook`` (random Permit/Deny)
+    enterprise — Enterprise DC (DCIM/VM/IPAM + Security objects + object links)
+    address_bench — 50,000 nested ``security-address`` hosts + COT rules on ``security-rulebook``

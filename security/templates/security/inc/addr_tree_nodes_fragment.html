@@ -1,0 +1,7 @@
+{% if prefix == "ipa" %}
+{% include "security/inc/ipa_object_tree_node.html" with nodes=nodes depth=depth ipa_cell_pill=ipa_cell_pill|default_if_none:True %}
+{% else %}
+{% for node in nodes %}
+  {% include "security/inc/addr_tree_node.html" with node=node depth=depth prefix=prefix show_copy=show_copy ipa_cell_pill=ipa_cell_pill|default_if_none:True forloop_counter=forloop.counter %}
+{% endfor %}
+{% endif %}

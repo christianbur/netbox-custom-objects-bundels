@@ -1,0 +1,20 @@
+schema_version: "1"
+types:
+  - name: ip_tree
+    slug: ip-tree
+    verbose_name: "IP Tree"
+    verbose_name_plural: "IP Tree"
+    description: "Read-only IPAM prefix/address tree (object proxy demo)."
+    group_name: "IPAM Tree"
+    # Dynamic COT -> view binding: selects the registered "ipam_tree" view.
+    views: "ipam_tree"
+    fields:
+      # A single object_proxy field marks this COT as a proxy type. It targets
+      # ipam/prefix (the tree roots/branches); the view fetches ipam/ipaddress
+      # leaves itself. related_object_filter is configurable (empty = all).
+      - id: 1
+        name: target
+        type: object_proxy
+        label: Target
+        related_object_type: ipam/prefix
+    removed_fields: []
